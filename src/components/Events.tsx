@@ -23,67 +23,68 @@ const EventsSection = () => {
   const [hoveredEvent, setHoveredEvent] = useState<number | null>(null);
 
   const events: Event[] = [
-    {
-      id: 1,
-      title: "Techathon 2024",
-      date: "2024-06-20",
-      type: "upcoming",
-      description:
-        "Our flagship annual hackathon bringing together the best tech minds.",
-      detailedDescription:
-        "A 48-hour hackathon where participants solve real-world problems using technology. Focus areas include AI/ML, Web3, IoT, and Sustainable Tech.",
-      participants: 200,
-      icon: <Zap className="w-5 h-5 sm:w-6 sm:h-6" />,
-      color: "vibranium",
-      learnings: [
-        "Full-stack development",
-        "Team collaboration",
-        "Pitching ideas to investors",
-        "Problem-solving under pressure",
-      ],
-      experience: [
-        "48 hours of intense coding",
-        "Mentorship from industry experts",
-        "Networking with tech companies",
-        "Prize pool of ₹50,000+",
-      ],
-      pastWinners: [
-        { name: "Team Quantum", project: "AI-based Healthcare Diagnosis" },
-        { name: "Byte Crushers", project: "Blockchain Voting System" },
-        { name: "Circuit Wizards", project: "Smart Energy Management" },
-      ],
-    },
-    {
-      id: 2,
-      title: "Circuitry Maze Workshop",
-      date: "2024-03-15",
-      type: "upcoming",
-      description:
-        "Hands-on workshop covering PCB design and electronic circuit fundamentals.",
-      detailedDescription:
-        "Learn PCB design, circuit simulation, and hands-on soldering techniques. Perfect for beginners and intermediate electronics enthusiasts.",
-      participants: 45,
-      icon: <Cpu className="w-5 h-5 sm:w-6 sm:h-6" />,
-      color: "silver",
-      learnings: [
-        "PCB design using KiCAD",
-        "Circuit simulation",
-        "Component selection",
-        "Soldering techniques",
-      ],
-      experience: [
-        "Hands-on PCB assembly",
-        "Live troubleshooting sessions",
-        "Take-home project kit",
-        "Industry expert guidance",
-      ],
-      pastWinners: [
-        { name: "Arjun Mehta", project: "Smart Home Automation System" },
-        { name: "Priya Sharma", project: "Solar Tracker Circuit" },
-        { name: "Rohan Verma", project: "Audio Amplifier Design" },
-      ],
-    },
-  ];
+  {
+    id: 2,
+    title: "Circuitry Maze Workshop",
+    date: "2024-03-15",
+    type: "upcoming",
+    description:
+      "Hands-on workshop covering PCB design and electronic circuit fundamentals.",
+    detailedDescription:
+      "Learn PCB design, circuit simulation, and hands-on soldering techniques. Perfect for beginners and intermediate electronics enthusiasts.",
+    participants: 45,
+    icon: <Cpu className="w-5 h-5 sm:w-6 sm:h-6" />,
+    color: "silver",
+    learnings: [
+      "PCB design using KiCAD",
+      "Circuit simulation",
+      "Component selection",
+      "Soldering techniques",
+    ],
+    experience: [
+      "Hands-on PCB assembly",
+      "Live troubleshooting sessions",
+      "Take-home project kit",
+      "Industry expert guidance",
+    ],
+    pastWinners: [
+      { name: "Arjun Mehta", project: "Smart Home Automation System" },
+      { name: "Priya Sharma", project: "Solar Tracker Circuit" },
+      { name: "Rohan Verma", project: "Audio Amplifier Design" },
+    ],
+  },
+  {
+    id: 1,
+    title: "Techathon 2024",
+    date: "2024-06-20",
+    type: "upcoming",
+    description:
+      "Our flagship annual hackathon bringing together the best tech minds.",
+    detailedDescription:
+      "A 48-hour hackathon where participants solve real-world problems using technology. Focus areas include AI/ML, Web3, IoT, and Sustainable Tech.",
+    participants: 200,
+    icon: <Zap className="w-5 h-5 sm:w-6 sm:h-6" />,
+    color: "vibranium",
+    learnings: [
+      "Full-stack development",
+      "Team collaboration",
+      "Pitching ideas to investors",
+      "Problem-solving under pressure",
+    ],
+    experience: [
+      "48 hours of intense coding",
+      "Mentorship from industry experts",
+      "Networking with tech companies",
+      "Prize pool of ₹50,000+",
+    ],
+    pastWinners: [
+      { name: "Team Quantum", project: "AI-based Healthcare Diagnosis" },
+      { name: "Byte Crushers", project: "Blockchain Voting System" },
+      { name: "Circuit Wizards", project: "Smart Energy Management" },
+    ],
+  },
+];
+
 
   const handleEventClick = (eventTitle: string) => {
     const slug = eventTitle
@@ -246,3 +247,4 @@ const EventsSection = () => {
 };
 
 export default EventsSection;
+
