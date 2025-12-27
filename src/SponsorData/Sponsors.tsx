@@ -13,12 +13,12 @@ export type Sponsor = {
     {
       name: "b",
       logo: "/sponsors/b.svg",
-      url: "https://b.com",
+      url: "https:/b.com",
     },
     {
       name: "a",
       logo: "/sponsors/a.svg",
-      url: "https://a.com",
+      url: "https:/a.com",
     },
     {
       name: "c",
