@@ -47,20 +47,20 @@ const TeamSection = () => {
   // DATA -----------------------------------------------------
 
   const leadershipTeam: TeamMember[] = [
-    { id: 1, name: "Jash Agarwal", role: "Event Head", image: "public/EH.jpg", linkedin: "#", instagram: "#", github: "#" },
-    { id: 2, name: "Pranav Amritwar", role: "Social Media Head", image: "public/SMMH.jpg", linkedin: "#", instagram: "#", github: "#" },
-    { id: 3, name: "Rahul Jain", role: "Design Head", image: "public/DH.jpg", linkedin: "#", instagram: "#", github: "#" },
-    { id: 4, name: "Priyani Gulgulia", role: "Technical Head", image: "public/TH.jpg", linkedin: "#", instagram: "#", github: "#" },
+    { id: 1, name: "Jash Agarwal", role: "Event Head", image: "/EH.jpg", linkedin: "#", instagram: "#", github: "#" },
+    { id: 2, name: "Pranav Amritwar", role: "Social Media Head", image: "/SMMH.jpg", linkedin: "#", instagram: "#", github: "#" },
+    { id: 3, name: "Rahul Jain", role: "Design Head", image: "/DH.jpg", linkedin: "#", instagram: "#", github: "#" },
+    { id: 4, name: "Priyani Gulgulia", role: "Technical Head", image: "/TH.jpg", linkedin: "#", instagram: "#", github: "#" },
     { id: 5, name: "Keya Desai", role: "Publicity Head", image: "/team/marcus.jpg", linkedin: "#", instagram: "#", github: "#" },
-    { id: 6, name: "Shravan Kundap", role: "Marketing Head", image: "public/MH.jpg", linkedin: "#", instagram: "#", github: "#" },
+    { id: 6, name: "Shravan Kundap", role: "Marketing Head", image: "/MH.jpg", linkedin: "#", instagram: "#", github: "#" },
   ];
 
   const coreMembers: TeamMember[] = [
-    { id: 7, name: "Jainesh Patel", role: "Chairperson", image: "public/CP.jpg", linkedin: "#", instagram: "#", github: "#" },
-    { id: 8, name: "Suyash Shirsat", role: "Vice-Chairperson", image: "public/VCP.jpg", linkedin: "#", instagram: "#", github: "#" },
-    { id: 9, name: "Unnati Mirani", role: "Secretary", image: "public/Sec.jpg", linkedin: "#", instagram: "#", github: "#" },
-    { id: 10, name: "Janhavi Chaudhari", role: "Joint-Secretary", image: "public/Joint Sec.jpg", linkedin: "#", instagram: "#", github: "#" },
-    { id: 11, name: "Devesh Shelatkar", role: "Treasurer", image: "public/Treasuer.jpg", linkedin: "#", instagram: "#", github: "#" },
+    { id: 7, name: "Jainesh Patel", role: "Chairperson", image: "/CP.jpg", linkedin: "#", instagram: "#", github: "#" },
+    { id: 8, name: "Suyash Shirsat", role: "Vice-Chairperson", image: "/VCP.jpg", linkedin: "#", instagram: "#", github: "#" },
+    { id: 9, name: "Unnati Mirani", role: "Secretary", image: "/Sec.jpg", linkedin: "#", instagram: "#", github: "#" },
+    { id: 10, name: "Janhavi Chaudhari", role: "Joint-Secretary", image: "/Joint Sec.jpg", linkedin: "#", instagram: "#", github: "#" },
+    { id: 11, name: "Devesh Shelatkar", role: "Treasurer", image: "/Treasuer.jpg", linkedin: "#", instagram: "#", github: "#" },
   ];
 
   const mentors: TeamMember[] = [
