@@ -2,6 +2,10 @@ import React from "react";
 import { Instagram, Facebook, Twitter, Linkedin, Send } from "lucide-react";
 
 const Footer = () => {
+  const socialLinks = {
+    instagram: "https://www.instagram.com/electroverse.comm_tsec/",
+    linkedin: "https://www.linkedin.com/company/electroverse-comm-tsec/"
+  };
   return (
     <footer className="w-full bg-black text-white py-16 border-t border-white/10 font-sans relative overflow-hidden">
       {/* --- THEME BACKGROUND GLOWS --- */}
@@ -143,13 +147,13 @@ const Footer = () => {
                 <Twitter className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href={socialLinks.instagram}
                 className="hover:text-purple-400 hover:scale-110 transition-all"
               >
                 <Instagram className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href={socialLinks.linkedin}
                 className="hover:text-purple-400 hover:scale-110 transition-all"
               >
                 <Linkedin className="w-5 h-5" />
@@ -174,9 +178,7 @@ const Footer = () => {
             <a href="#" className="hover:text-white transition">
               Privacy Policy
             </a>
-            <a href="#" className="hover:text-white transition">
-              Addendum
-            </a>
+            
           </div>
 
           <p className="tracking-wide opacity-70 text-center md:text-right">

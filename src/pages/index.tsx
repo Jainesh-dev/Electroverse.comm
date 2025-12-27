@@ -6,6 +6,8 @@ import AboutSection from "@/components/About";
 import EventsSection from "@/components/Events";
 import TeamSection from "@/components/Team";
 import ContactSection from "@/components/Contact";
+import PastSponsors from "@/components/PastSponsors";
+
 import { Instagram, Linkedin } from "lucide-react";
 
 const Index = () => {
@@ -68,6 +70,10 @@ const Index = () => {
 
         <section id="team">
           <TeamSection />
+        </section>
+
+        <section id="sponsors">
+          <PastSponsors />
         </section>
 
         <section id="contact">

@@ -16,7 +16,9 @@ const Navbar = ({ activeSection, onNavigate }: NavbarProps) => {
     { id: "about", label: "About" },
     { id: "events", label: "Events" },
     { id: "team", label: "Team" },
+    {label: "Sponsors",id: "sponsors",},
     { id: "contact", label: "Contact Us" },
+    
   ];
 
   const socialLinks = {
