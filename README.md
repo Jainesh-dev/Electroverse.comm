@@ -1,8 +1,4 @@
-Here is a **highly attractive, modern, professional README.md** styled perfectly for a technical committee website like **Electroverse**.
 
-You can copy–paste directly into your README.md.
-
----
 
 # ⚡ **Electroverse.comm – Official Technical Committee Website**
 
