@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Instagram, Linkedin } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface NavbarProps {
   activeSection: string;
@@ -10,65 +11,72 @@ interface NavbarProps {
 const Navbar = ({ activeSection, onNavigate }: NavbarProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
 
   const navItems = [
     { id: "home", label: "Home" },
     { id: "about", label: "About" },
     { id: "events", label: "Events" },
-    { id: "team", label: "Team" },
-    {label: "Sponsors",id: "sponsors",},
+    { id: "team", label: "Team" }, // separate page
     { id: "contact", label: "Contact Us" },
-    
   ];
 
   const socialLinks = {
     instagram: "https://www.instagram.com/electroverse.comm_tsec/",
-    linkedin: "https://www.linkedin.com/company/electroverse-comm-tsec/"
+    linkedin: "https://www.linkedin.com/company/electroverse-comm-tsec/",
   };
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleNavClick = (id: string) => {
+    if (id === "team") {
+      navigate("/team");
+    } else {
+      onNavigate(id);
+    }
+    setIsOpen(false);
+  };
+
   return (
-    <nav className={`w-full fixed top-0 z-50 transition-all duration-300 ${
-      isScrolled 
-        ? "bg-black-900/95 backdrop-blur-lg border-b shadow-lg" 
-        : "bg-black-900/90 backdrop-blur-md"
-    }`}>
-      {/* Desktop Navigation */}
+    <nav
+      className={`fixed top-0 z-50 w-full transition-all duration-300 ${
+        isScrolled
+          ? "bg-background/70 backdrop-blur-xl border-b border-white/10"
+          : "bg-transparent"
+      }`}
+    >
+      {/* ================= DESKTOP ================= */}
       <div className="hidden md:flex items-center justify-between max-w-7xl mx-auto px-6 py-4">
-        {/* Left Corner - Logo */}
-        <div 
-          className="cursor-pointer flex items-center space-x-3 group"
-          onClick={() => onNavigate("home")}
+        
+        {/* Logo */}
+        <div
+          className="flex items-center space-x-3 cursor-pointer group"
+          onClick={() => navigate("/")}
         >
-          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-white-500 to-black-600 flex items-center justify-center shadow-lg group-hover:shadow-gray-500/25 transition-all duration-300">
-            <img 
-              src="/logo.png" 
-              alt="Electroverse Logo" 
-              className="h-8 w-8 object-contain"
-            />
+          <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-md flex items-center justify-center shadow-lg">
+            <img src="/logo.png" alt="Electroverse Logo" className="h-8 w-8" />
           </div>
-          <span className="font-bold text-2xl bg-gradient-to-r from-purple-400 to-gray-500 bg-clip-text text-transparent group-hover:from-blue-50 group-hover:to-Gray-800 transition-all duration-300">
+          <span className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-gray-400 bg-clip-text text-transparent">
             ELECTROVERSE
           </span>
         </div>
 
-        {/* Center Navigation */}
-        <div className="flex items-center space-x-1 bg-black-800/60 rounded-2xl px-2 py-2  ">
+        {/* Nav Items */}
+        <div className="flex items-center space-x-1 bg-white/5 backdrop-blur-md rounded-2xl px-2 py-2">
           {navItems.map((item) => (
             <button
               key={item.id}
-              onClick={() => onNavigate(item.id)}
-              className={`px-6 py-3 rounded-xl font-semibold text-lg transition-all duration-300 ${
-                activeSection === item.id 
-                  ? " text-white shadow-inner border border-gray-500/30" 
-                  : "text-gray-300 hover:text-white hover:bg-gray-700/50"
+              onClick={() => handleNavClick(item.id)}
+              className={`px-6 py-3 rounded-xl font-semibold text-lg transition-all ${
+                activeSection === item.id && item.id !== "team"
+                  ? "text-white bg-white/10"
+                  : "text-gray-300 hover:text-white hover:bg-white/10"
               }`}
             >
               {item.label}
@@ -76,84 +84,74 @@ const Navbar = ({ activeSection, onNavigate }: NavbarProps) => {
           ))}
         </div>
 
-        {/* Right Corner - Social Media Icons */}
+        {/* Social Icons */}
         <div className="flex items-center space-x-3">
-          <a 
-            href={socialLinks.instagram} 
-            target="_blank" 
+          <a
+            href={socialLinks.instagram}
+            target="_blank"
             rel="noopener noreferrer"
-            className="w-12 h-12 rounded-xl bg-black-800 flex items-center justify-center border border-gray-700 text-gray-300 hover:text-white hover:border-black-500 hover:bg-gray-700 hover:shadow-lg transition-all duration-300"
+            className="w-11 h-11 rounded-xl bg-white/5 backdrop-blur-md
+                       flex items-center justify-center
+                       border border-white/10
+                       text-gray-300 hover:text-white hover:bg-white/10 transition"
           >
-            <Instagram size={24} />
+            <Instagram size={22} />
           </a>
-          <a 
-            href={socialLinks.linkedin} 
-            target="_blank" 
+          <a
+            href={socialLinks.linkedin}
+            target="_blank"
             rel="noopener noreferrer"
-            className="w-12 h-12 rounded-xl bg-black-800 flex items-center justify-center border border-gray-700 text-gray-300 hover:text-white hover:border-black-500 hover:bg-gray-700 hover:shadow-lg transition-all duration-300"
+            className="w-11 h-11 rounded-xl bg-white/5 backdrop-blur-md
+                       flex items-center justify-center
+                       border border-white/10
+                       text-gray-300 hover:text-white hover:bg-white/10 transition"
           >
-            <Linkedin size={24} />
+            <Linkedin size={22} />
           </a>
         </div>
       </div>
 
-      {/* Mobile Header */}
-      <div className="md:hidden w-full">
-        <div className={`flex items-center justify-between px-4 py-3 ${
-          isScrolled ? "bg-black-900/95" : "bg-black-900/90"
-        }`}>
-          {/* Left Corner - Logo */}
-          <div 
-            className="cursor-pointer flex items-center space-x-2"
-            onClick={() => onNavigate("home")}
+      {/* ================= MOBILE ================= */}
+      <div className="md:hidden">
+        <div className="flex items-center justify-between px-4 py-3">
+          
+          {/* Logo */}
+          <div
+            className="flex items-center space-x-2 cursor-pointer"
+            onClick={() => navigate("/")}
           >
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-white-500 to-black-600 flex items-center justify-center shadow-md">
-              <img 
-                src="/logo.png" 
-                alt="Electroverse Logo" 
-                className="h-6 w-6 object-contain"
-              />
+            <div className="w-10 h-10 rounded-lg bg-white/10 backdrop-blur-md flex items-center justify-center">
+              <img src="/logo.png" alt="Logo" className="h-6 w-6" />
             </div>
-            <span className="font-bold text-xl bg-gradient-to-r from-purple-400 to-gray-500 bg-clip-text text-transparent">
+            <span className="text-xl font-bold bg-gradient-to-r from-purple-400 to-gray-400 bg-clip-text text-transparent">
               ELECTROVERSE
             </span>
           </div>
 
-          {/* Right Corner - Social Media Icons and Menu Button */}
-          <div className="flex items-center space-x-2">            
-            {/* Mobile Menu Button */}
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsOpen(!isOpen)}
-              className="w-10 h-10 rounded-lg bg-black-800 border border-gray-700 text-gray-300 hover:text-white hover:bg-gray-700"
-            >
-              {isOpen ? <X size={18} /> : <Menu size={18} />}
-            </Button>
-          </div>
+          {/* Menu Button */}
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setIsOpen(!isOpen)}
+            className="w-10 h-10 rounded-lg border border-white/10 bg-white/5 backdrop-blur-md"
+          >
+            {isOpen ? <X size={18} /> : <Menu size={18} />}
+          </Button>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Menu */}
         {isOpen && (
-          <div className="absolute top-full left-0 right-0 bg-gray-800/75 backdrop-blur-lg border-t border-gray-700 shadow-lg">
-            <div className="px-4 py-3 space-y-1">
-              {navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => {
-                    onNavigate(item.id);
-                    setIsOpen(false);
-                  }}
-                  className={`block w-full text-left px-4 py-4 rounded-xl font-semibold text-lg transition-all duration-300 ${
-                    activeSection === item.id
-                      ? " text-white border border-gray-500/30"
-                      : "text-gray-300 hover:text-white hover:bg-black-800"
-                  }`}
-                >
-                  {item.label}
-                </button>
-              ))}
-            </div>
+          <div className="bg-background/80 backdrop-blur-xl border-t border-white/10 px-4 py-3 space-y-1">
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => handleNavClick(item.id)}
+                className="block w-full text-left px-4 py-4 rounded-xl text-lg font-semibold
+                           text-gray-300 hover:text-white hover:bg-white/10"
+              >
+                {item.label}
+              </button>
+            ))}
           </div>
         )}
       </div>
