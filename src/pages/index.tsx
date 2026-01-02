@@ -4,7 +4,6 @@ import HeroSection from "@/components/Hero";
 import EventCountdown from "@/components/EventCountdown";
 import AboutSection from "@/components/About";
 import EventsSection from "@/components/Events";
-import TeamSection from "@/components/Team";
 import ContactSection from "@/components/Contact";
 import PastSponsors from "@/components/PastSponsors";
 
@@ -68,10 +67,7 @@ const Index = () => {
           <EventsSection />
         </section>
 
-        <section id="team">
-          <TeamSection />
-        </section>
-
+     
         <section id="sponsors">
           <PastSponsors />
         </section>
