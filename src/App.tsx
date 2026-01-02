@@ -5,6 +5,7 @@ import NotFound from "./pages/NotFound";
 import Loading from "./components/ui/Loading";
 import EventDetails from './pages/EventDetails';
 import FullTimeline from "@/pages/FullTimeline";
+import Team from "./pages/Team";
 
 
 const App = () => {
@@ -27,6 +28,8 @@ const App = () => {
         <Route path="/event/:eventName" element={<EventDetails />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/timeline" element={<FullTimeline />} />
+        <Route path="/team" element={<Team />} />
+
       </Routes>
     </BrowserRouter>
   );
