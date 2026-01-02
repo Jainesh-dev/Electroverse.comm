@@ -1,28 +1,35 @@
 export type Sponsor = {
     name: string;
     logo: string;
-    url?: string;
   };
   
   export const sponsors: Sponsor[] = [
     {
       name: "Honda",
       logo: "/SponsorsLogo/Honda.jpg",
-      url: "https://www.honda.com/",
+
     },
     {
-      name: "b",
-      logo: "/sponsors/b.svg",
-      url: "https:/b.com",
+      name: "Vijay Sales",
+      logo: "/SponsorsLogo/VijaySales.png",
+
     },
     {
-      name: "a",
-      logo: "/sponsors/a.svg",
-      url: "https:/a.com",
+      name: "Max Protein",
+      logo: "/SponsorsLogo/logo6.png",
+
     },
     {
-      name: "c",
-      logo: "/sponsors/c.svg",
+      name: "BreathAI",
+      logo: "/SponsorsLogo/logo3.png",
     },
+    {
+      name: "Kalpataru Infotech",
+      logo: "/SponsorsLogo/logo8.png",
+    },
+    {
+      name: "Pixaflip Technologies",
+      logo: "/SponsorsLogo/logo5.png",
+    }, 
   ];
   
