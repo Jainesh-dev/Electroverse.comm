@@ -39,8 +39,6 @@ const AboutSection = () => {
   const photos = [
     "/Event_1.jpg",
     "/Techathon 2025.jpg",
-    "/Event_2.jpg",
-    
   ];
 
   const [index, setIndex] = useState(0);
@@ -86,18 +84,12 @@ const AboutSection = () => {
           <div className="max-w-xl sm:max-w-2xl md:max-w-4xl mx-auto space-y-4 sm:space-y-6 text-sm sm:text-base md:text-lg text-muted-foreground">
             <p>
               <span className="text-electric font-semibold">Electroverse</span>{" "}
-              is the official student-driven technical committee that brings
+              is the official student-driven technical committee of TSEC that brings
               together developers, hardware geeks, designers, and innovators
               under one banner.
             </p>
-            <p>
-              We act as a bridge between{" "}
-              <span className="font-medium text-foreground">
-                academics, industry, and peer learning
-              </span>
-              . Through events, workshops, mentorship, and hands-on sessions, we
-              ensure every member gets exposure to real-world technologies.
-            </p>
+            
+            
             <p>
               Whether you're beginning or already advanced, Electroverse gives
               you a platform to{" "}
@@ -169,3 +161,4 @@ const AboutSection = () => {
 };
 
 export default AboutSection;
+
