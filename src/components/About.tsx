@@ -37,8 +37,8 @@ const AboutSection = () => {
   // PHOTO SLIDER LOGIC
   // ---------------------------
   const photos = [
-    "/Event_1.jpg",
-    "/Techathon 2025.jpg",
+    "/Event_1.webp",
+    "/Techathon 2025.webp",
   ];
 
   const [index, setIndex] = useState(0);

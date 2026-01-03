@@ -60,7 +60,7 @@ const Navbar = ({ activeSection, onNavigate }: NavbarProps) => {
           onClick={() => navigate("/")}
         >
           <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-md flex items-center justify-center shadow-lg">
-            <img src="/logo.png" alt="Electroverse Logo" className="h-8 w-8" />
+            <img src="/logo.webp" alt="Electroverse Logo" className="h-8 w-8" />
           </div>
           <span className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-gray-400 bg-clip-text text-transparent">
             ELECTROVERSE
@@ -121,7 +121,7 @@ const Navbar = ({ activeSection, onNavigate }: NavbarProps) => {
             onClick={() => navigate("/")}
           >
             <div className="w-10 h-10 rounded-lg bg-white/10 backdrop-blur-md flex items-center justify-center">
-              <img src="/logo.png" alt="Logo" className="h-6 w-6" />
+              <img src="/logo.webp" alt="Logo" className="h-6 w-6" />
             </div>
             <span className="text-xl font-bold bg-gradient-to-r from-purple-400 to-gray-400 bg-clip-text text-transparent">
               ELECTROVERSE

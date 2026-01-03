@@ -19,25 +19,25 @@ const Team = () => {
   ====================================================== */
 
   const mentors: TeamMember[] = [
-    { id: 101, name: "Dr. Maniroja Edinburg", role: "Head of Department", image: "/mentors/jennifer.jpg", linkedin: "#", instagram: "#", github: "#" },
-    { id: 102, name: "Prof. Bharti Ingale", role: "Committee Co-Ordinator", image: "/mentors/michael.jpg", linkedin: "#", instagram: "#", github: "#" },
-    { id: 103, name: "Dr. Manoj Kavedia", role: "Committee Co-Ordinator", image: "/mentors/rachel.jpg", linkedin: "#", instagram: "#", github: "#" },
+    { id: 101, name: "Dr. Maniroja Edinburg", role: "Head of Department", image: "/mentors/jennifer.webp", linkedin: "#", instagram: "#", github: "#" },
+    { id: 102, name: "Prof. Bharti Ingale", role: "Committee Co-Ordinator", image: "/mentors/michael.webp", linkedin: "#", instagram: "#", github: "#" },
+    { id: 103, name: "Dr. Manoj Kavedia", role: "Committee Co-Ordinator", image: "/mentors/rachel.webp", linkedin: "#", instagram: "#", github: "#" },
   ];
 
   const coreMembers: TeamMember[] = [
-    { id: 1, name: "Jainesh Patel", role: "Chairperson", image: "/CP.jpg", linkedin: "#", instagram: "#", github: "#" },
-    { id: 2, name: "Suyash Shirsat", role: "Vice Chairperson", image: "/VCP.jpg", linkedin: "#", instagram: "#", github: "#" },
-    { id: 3, name: "Unnati Mirani", role: "Secretary", image: "/Sec.jpg", linkedin: "#", instagram: "#", github: "#" },
-    { id: 4, name: "Janhavi Chaudhari", role: "Joint Secretary", image: "/Joint Sec.jpg", linkedin: "#", instagram: "#", github: "#" },
-    { id: 5, name: "Devesh Shelatkar", role: "Treasurer", image: "/Treasuer.jpg", linkedin: "#", instagram: "#", github: "#" },
+    { id: 1, name: "Jainesh Patel", role: "Chairperson", image: "/CP.webp", linkedin: "#", instagram: "#", github: "#" },
+    { id: 2, name: "Suyash Shirsat", role: "Vice Chairperson", image: "/VCP.webp", linkedin: "#", instagram: "#", github: "#" },
+    { id: 3, name: "Unnati Mirani", role: "Secretary", image: "/Sec.webp", linkedin: "#", instagram: "#", github: "#" },
+    { id: 4, name: "Janhavi Chaudhari", role: "Joint Secretary", image: "/Joint Sec.webp", linkedin: "#", instagram: "#", github: "#" },
+    { id: 5, name: "Devesh Shelatkar", role: "Treasurer", image: "/Treasuer.webp", linkedin: "#", instagram: "#", github: "#" },
   ];
 
   const heads: TeamMember[] = [
-    { id: 10, name: "Jash Agarwal", role: "Event Head", image: "/EH.jpg", linkedin: "#", instagram: "#", github: "#" },
-    { id: 11, name: "Pranav Amritwar", role: "Social Media Head", image: "/SMMH.jpg", linkedin: "#", instagram: "#", github: "#" },
-    { id: 12, name: "Rahul Jain", role: "Design Head", image: "/DH.jpg", linkedin: "#", instagram: "#", github: "#" },
-    { id: 13, name: "Priyani Gulgulia", role: "Technical Head", image: "/TH.jpg", linkedin: "#", instagram: "#", github: "#" },
-    { id: 14, name: "Shravan Kundap", role: "Marketing Head", image: "/MH.jpg", linkedin: "#", instagram: "#", github: "#" },
+    { id: 10, name: "Jash Agarwal", role: "Event Head", image: "/EH.webp", linkedin: "#", instagram: "#", github: "#" },
+    { id: 11, name: "Pranav Amritwar", role: "Social Media Head", image: "/SMMH.webp", linkedin: "#", instagram: "#", github: "#" },
+    { id: 12, name: "Rahul Jain", role: "Design Head", image: "/DH.webp", linkedin: "#", instagram: "#", github: "#" },
+    { id: 13, name: "Priyani Gulgulia", role: "Technical Head", image: "/TH.webp", linkedin: "#", instagram: "#", github: "#" },
+    { id: 14, name: "Shravan Kundap", role: "Marketing Head", image: "/MH.webp", linkedin: "#", instagram: "#", github: "#" },
     { id: 14, name: "Keya Desai", role: "Public Relations Head", image: "", linkedin: "#", instagram: "#", github: "#" },
   ];
   
@@ -53,7 +53,7 @@ const Team = () => {
       
       <div className="w-28 h-28 mx-auto rounded-full overflow-hidden 
                       border-2 border-vibranium mb-4">
-        <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
+        <img src={member.image} alt={member.name} loading="lazy" className="w-full h-full object-cover" />
       </div>
 
       <h3 className="text-center text-base font-bold">{member.name}</h3>

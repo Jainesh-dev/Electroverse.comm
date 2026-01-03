@@ -1,36 +1,51 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { lazy, Suspense, useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Index from "./pages/index";
 import NotFound from "./pages/NotFound";
 import Loading from "./components/ui/Loading";
-import EventDetails from './pages/EventDetails';
-import FullTimeline from "@/pages/FullTimeline";
+import EventDetails from "./pages/EventDetails";
 import Team from "./pages/Team";
 
+const ContactUs = lazy(() => import("./pages/ContactUs"));
+const FullTimeline = lazy(() => import("./pages/FullTimeline"));
 
-const App = () => {
-  const [loading, setLoading] = useState(true);
+/* Separate component to access useLocation safely */
+const AppRoutes = () => {
+  const location = useLocation();
+  const [showLoader, setShowLoader] = useState(true);
 
   useEffect(() => {
-    //  after 5 seconds
-    const timer = setTimeout(() => setLoading(false), 5000);
-    return () => clearTimeout(timer);
-  }, []);
+    if (location.pathname === "/") {
+      const timer = setTimeout(() => setShowLoader(false), 5000);
+      return () => clearTimeout(timer);
+    } else {
+      setShowLoader(false);
+    }
+  }, [location.pathname]);
 
-  if (loading) {
+  
+  if (showLoader && location.pathname === "/") {
     return <Loading />;
   }
 
   return (
-    <BrowserRouter>
+    <Suspense fallback={null}>
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/event/:eventName" element={<EventDetails />} />
-        <Route path="*" element={<NotFound />} />
         <Route path="/timeline" element={<FullTimeline />} />
         <Route path="/team" element={<Team />} />
-
+        <Route path="/contact" element={<ContactUs />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
+    </Suspense>
+  );
+};
+
+const App = () => {
+  return (
+    <BrowserRouter>
+      <AppRoutes />
     </BrowserRouter>
   );
 };

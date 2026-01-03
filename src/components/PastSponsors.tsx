@@ -13,7 +13,7 @@ export default function PastSponsors() {
             {[...sponsors, ...sponsors].map((sponsor, index) => (
               <a
                 key={`${sponsor.name}-${index}`}
-                href={sponsor.url ?? "#"}
+                href={"#"}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center min-w-[160px]"

@@ -46,12 +46,12 @@ const HeroSection = ({ onNavigate }: HeroSectionProps) => {
           }`}
         >
           {/* Main Title – centered Electroverse.comm */}
-          <h1 className="font-tech font-bold text-transparent bg-clip-text bg-gradient-to-b from-white via-purple-100 to-gray-300 drop-shadow-[0_0_22px_rgba(168,85,247,0.45)] mb-6 leading-tight break-words px-2 text-[clamp(2.2rem,8vw,5.5rem)]">
-            ELECTROVERSE
-            <span className="text-vibranium">.COMM</span>
+          <h1
+            className="font-tech font-bold text-transparent bg-clip-text bg-gradient-to-b from-white via-purple-100 to-gray-300 drop-shadow-[0_0_22px_rgba(168,85,247,0.45)] leading-[1.05] text-center
+            px-4 break-words text-[clamp(2rem,7vw,5.5rem)] ">
+              ELECTROVERSE
+            <span className="text-vibranium whitespace-nowrap">.COMM</span>
           </h1>
-
-
           {/* Subheading */}
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-12 max-w-xl sm:max-w-2xl mx-auto font-mono">
             Powering the campus tech culture with innovation, events and strong
