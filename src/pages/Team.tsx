@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Linkedin, Instagram, Github } from "lucide-react";
+import { useEffect } from "react";
 
 interface TeamMember {
   id: number;
@@ -13,6 +14,11 @@ interface TeamMember {
 
 const Team = () => {
   const navigate = useNavigate();
+
+  // ✅ Always open Team page at top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   /* ======================================================
      DATA
@@ -38,9 +44,8 @@ const Team = () => {
     { id: 12, name: "Rahul Jain", role: "Design Head", image: "/DH.webp", linkedin: "#", instagram: "#", github: "#" },
     { id: 13, name: "Priyani Gulgulia", role: "Technical Head", image: "/TH.webp", linkedin: "#", instagram: "#", github: "#" },
     { id: 14, name: "Shravan Kundap", role: "Marketing Head", image: "/MH.webp", linkedin: "#", instagram: "#", github: "#" },
-    { id: 14, name: "Keya Desai", role: "Public Relations Head", image: "", linkedin: "#", instagram: "#", github: "#" },
+    { id: 15, name: "Keya Desai", role: "Public Relations Head", image: "/placeholder.webp", linkedin: "#", instagram: "#", github: "#" },
   ];
-  
 
   /* ======================================================
      TEAM CARD
@@ -53,20 +58,32 @@ const Team = () => {
       
       <div className="w-28 h-28 mx-auto rounded-full overflow-hidden 
                       border-2 border-vibranium mb-4">
-        <img src={member.image} alt={member.name} loading="lazy" className="w-full h-full object-cover" />
+        <img
+          src={member.image}
+          alt={member.name}
+          loading="lazy"
+          onError={(e) => {
+            (e.target as HTMLImageElement).src =
+              `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=7c3aed&color=fff&bold=true`;
+          }}
+          className="w-full h-full object-cover"
+        />
       </div>
 
       <h3 className="text-center text-base font-bold">{member.name}</h3>
       <p className="text-center text-sm text-vibranium mt-1">{member.role}</p>
 
       <div className="flex justify-center gap-3 mt-4">
-        <a href={member.linkedin || "#"} className="p-2 bg-gray-800/60 rounded-full hover:bg-vibranium/80 transition">
+        <a href={member.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
+           className="p-2 bg-gray-800/60 rounded-full hover:bg-vibranium/80 transition">
           <Linkedin size={16} />
         </a>
-        <a href={member.instagram || "#"} className="p-2 bg-gray-800/60 rounded-full hover:bg-pink-500/80 transition">
+        <a href={member.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+           className="p-2 bg-gray-800/60 rounded-full hover:bg-pink-500/80 transition">
           <Instagram size={16} />
         </a>
-        <a href={member.github || "#"} className="p-2 bg-gray-800/60 rounded-full hover:bg-gray-300 hover:text-black transition">
+        <a href={member.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub"
+           className="p-2 bg-gray-800/60 rounded-full hover:bg-gray-300 hover:text-black transition">
           <Github size={16} />
         </a>
       </div>
@@ -83,7 +100,9 @@ const Team = () => {
         className="grid gap-4 justify-items-center w-full max-w-5xl"
         style={{ gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))" }}
       >
-        {members.map((m) => <TeamCard key={m.id} member={m} />)}
+        {members.map((m) => (
+          <TeamCard key={m.id} member={m} />
+        ))}
       </div>
     </div>
   );
@@ -102,6 +121,7 @@ const Team = () => {
                    bg-gray-800/70 border border-vibranium/30
                    flex items-center justify-center text-xl
                    hover:bg-gray-700/80 transition"
+        aria-label="Back to Home"
       >
         ←
       </button>
