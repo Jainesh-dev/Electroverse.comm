@@ -49,7 +49,7 @@ const timelineData: TimelineYearBlock[] = [
         title: "Circuitry Maze",
         description: "Hands-on PCB design workshop.",
         status: "past",
-        image: "/Circuitary Maze 2024.webp",
+        image: "/CM1.webp",
       },
       {
         title: "Techathon 2024",
@@ -238,3 +238,4 @@ const FullTimeline = () => {
 };
 
 export default FullTimeline;
+
