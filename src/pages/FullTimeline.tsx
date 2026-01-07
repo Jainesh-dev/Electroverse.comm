@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ArrowRightCircle, Calendar } from "lucide-react";
+import { ArrowLeft, Calendar } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 type TimelineStatus = "past" | "upcoming";
@@ -49,7 +49,7 @@ const timelineData: TimelineYearBlock[] = [
     year: 2024,
     events: [
       {
-        title: "Circuitry Maze ",
+        title: "Circuitry Maze",
         description: "Hands-on PCB design workshop.",
         status: "past",
         image: "/Circuitary Maze 2024.webp",
@@ -60,7 +60,7 @@ const timelineData: TimelineYearBlock[] = [
         status: "past",
         image: "/Techathon 2024.webp",
       },
-    ],  
+    ],
   },
   {
     year: 2023,
@@ -73,8 +73,6 @@ const timelineData: TimelineYearBlock[] = [
       },
     ],
   },
-  
-  
 ];
 
 const FullTimeline = () => {
@@ -82,232 +80,166 @@ const FullTimeline = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "auto" });
+    window.scrollTo(0, 0);
   }, []);
 
   return (
     <section className="py-16 relative overflow-hidden">
-      {/* glowing background */}
+
+      {/* 🔙 BACK BUTTON (TOP LEFT) */}
+      <button
+        onClick={() => navigate(-1)}
+        aria-label="Go back"
+        className="fixed top-6 left-6 z-50 w-12 h-12 rounded-full
+                   bg-gray-800/70 backdrop-blur-md
+                   border border-electric/30
+                   flex items-center justify-center
+                   hover:bg-gray-700/80 transition-all"
+      >
+        <ArrowLeft className="w-5 h-5 text-electric" />
+      </button>
+
+      {/* Background Glows */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-1/3 w-72 h-72 bg-electric/10 blur-3xl rounded-full" />
-        <div
-          className="absolute bottom-10 right-1/4 w-80 h-80 bg-neon/10 blur-3xl rounded-full"
-          style={{ animationDelay: "1s" }}
-        />
+        <div className="absolute bottom-10 right-1/4 w-80 h-80 bg-neon/10 blur-3xl rounded-full" />
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Page Title */}
-        <div className="text-center mb-8 md:mb-10">
+        <div className="text-center mb-10">
           <h2 className="text-4xl md:text-5xl font-tech font-bold">
             <span className="text-electric">Electroverse</span>{" "}
             <span className="text-neon">Timeline</span>
           </h2>
           <p className="text-muted-foreground text-lg mt-4 max-w-2xl mx-auto">
-            A journey through our major workshops, hackathons, and innovations — from{" "}
-            <strong>2023</strong> to <strong>2026</strong>.
+            A journey through our workshops, hackathons, and innovations —
+            from <strong>2023</strong> to <strong>2026</strong>.
           </p>
         </div>
 
-        {/* FILTER TABS: ALL / PAST / UPCOMING */}
-        <div className="flex justify-center gap-3 mb-10">
-          {[
-            { label: "All", value: "all" as const },
-            { label: "Past", value: "past" as const },
-            { label: "Upcoming", value: "upcoming" as const },
-          ].map((tab) => (
+        {/* FILTER TABS */}
+        <div className="flex justify-center gap-3 mb-12">
+          {["all", "past", "upcoming"].map((tab) => (
             <button
-              key={tab.value}
-              onClick={() => setFilter(tab.value)}
-              className={`px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium border transition-all duration-200 ${
-                filter === tab.value
+              key={tab}
+              onClick={() => setFilter(tab as any)}
+              className={`px-4 py-1.5 rounded-full text-sm font-medium border transition-all ${
+                filter === tab
                   ? "bg-electric/20 text-electric border-electric shadow-[0_0_12px_rgba(56,189,248,0.6)]"
-                  : "bg-card/40 text-muted-foreground border-white/10 hover:border-electric/40 hover:text-electric"
+                  : "bg-card/40 text-muted-foreground border-white/10 hover:text-electric"
               }`}
             >
-              {tab.label}
+              {tab.toUpperCase()}
             </button>
           ))}
         </div>
 
         {/* TIMELINE */}
         <div className="relative max-w-5xl mx-auto">
-          {/* Center laser line */}
-          <div className="absolute top-0 bottom-0 left-1/2 w-[3px] -translate-x-1/2 bg-gradient-to-b from-electric via-neon to-electric opacity-80 shadow-[0_0_25px_rgba(56,189,248,0.9)]" />
-          {/* Inner animated beam */}
-          <div className="absolute top-0 bottom-0 left-1/2 w-px -translate-x-1/2 bg-electric/60 animate-pulse" />
+          {/* Center Line */}
+          <div className="absolute top-0 bottom-0 left-1/2 w-[3px] -translate-x-1/2 bg-gradient-to-b from-electric via-neon to-electric opacity-80" />
 
-          <div className="space-y-12 md:space-y-16">
+          <div className="space-y-16">
             {timelineData.map((block, index) => {
               const filteredEvents =
                 filter === "all"
                   ? block.events
-                  : block.events.filter((ev) => ev.status === filter);
+                  : block.events.filter((e) => e.status === filter);
 
-              if (filteredEvents.length === 0) return null;
-
+              if (!filteredEvents.length) return null;
               const isLeft = index % 2 === 0;
 
               return (
-                <div
-                  key={block.year}
-                  className="relative md:flex md:items-stretch md:min-h-[160px]"
-                >
-                  {/* Mobile (single column) */}
-                  <div className="md:hidden w-full">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="relative">
-                        <div className="absolute top-0 bottom-0 left-1/2 w-px -translate-x-1/2 bg-electric/40" />
-                        <div className="relative w-5 h-5 rounded-full bg-electric border-2 border-white shadow-[0_0_10px_rgba(56,189,248,0.7)]" />
-                      </div>
-                      <span className="text-electric font-bold text-2xl">
-                        {block.year}
-                      </span>
-                    </div>
-                    <div className="space-y-4">
-                      {filteredEvents.map((event, idx) => (
-                        <div
-                          key={idx}
-                          className="bg-card/50 backdrop-blur-md border border-white/10 rounded-lg p-4 hover:border-electric/40 transition-all"
-                        >
-                          <div className="flex items-center gap-2 mb-1">
-                            <Calendar className="w-4 h-4 text-electric" />
-                            <h4 className="text-lg font-semibold">
-                              {event.title}
-                            </h4>
-                          </div>
-
-                          {event.image && (
-                            <div className="mt-2 mb-3 rounded-lg overflow-hidden border border-white/10">
-                              <img
-                                src={event.image}
-                                alt={event.title}
-                                className="w-full h-40 object-cover"
-                              />
-                            </div>
-                          )}
-
-                          <p className="text-sm text-muted-foreground">
-                            {event.description}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* LEFT SIDE (desktop) */}
-                  <div className="hidden md:flex w-1/2 items-stretch justify-end">
+                <div key={block.year} className="relative md:flex">
+                  {/* LEFT */}
+                  <div className={`hidden md:block w-1/2 ${isLeft ? "pr-8 text-right" : ""}`}>
                     {isLeft && (
-                      <div className="w-full pr-6 text-right relative pt-6">
-                        {/* Year label – pulled a bit away from center line */}
-                        <div className="absolute right-10 top-0">
-                          <span className="text-electric font-bold text-3xl">
-                            {block.year}
-                          </span>
-                        </div>
-
-                        {/* Connector from center line */}
-                        <div className="absolute top-[52px] right-0 h-px w-8 bg-electric/60 shadow-[0_0_12px_rgba(56,189,248,0.9)]" />
-
-                        <div className="mt-6 space-y-4">
-                          {filteredEvents.map((event, idx) => (
-                            <div
-                              key={idx}
-                              className="bg-card/50 backdrop-blur-md border border-white/10 rounded-lg p-4 hover:border-electric/40 transition-all"
-                            >
-                              <div className="flex items-center justify-end gap-2 mb-1">
-                                <h4 className="text-lg font-semibold">
-                                  {event.title}
-                                </h4>
-                                <Calendar className="w-4 h-4 text-electric" />
-                              </div>
-
-                              {event.image && (
-                                <div className="mt-2 mb-3 rounded-lg overflow-hidden border border-white/10">
-                                  <img
-                                    src={event.image}
-                                    alt={event.title}
-                                    className="w-full h-40 object-cover"
-                                  />
-                                </div>
-                              )}
-
-                              <p className="text-sm text-muted-foreground text-right">
-                                {event.description}
-                              </p>
+                      <>
+                        <h3 className="text-electric font-bold text-3xl mb-4">
+                          {block.year}
+                        </h3>
+                        {filteredEvents.map((event, i) => (
+                          <div
+                            key={i}
+                            className="bg-card/50 backdrop-blur-md border border-white/10 rounded-lg p-4 mb-4"
+                          >
+                            <div className="flex justify-end gap-2 mb-2">
+                              <h4 className="font-semibold">{event.title}</h4>
+                              <Calendar className="w-4 h-4 text-electric" />
                             </div>
-                          ))}
-                        </div>
-                      </div>
+                            {event.image && (
+                              <img src={event.image} alt={event.title} className="rounded mb-3" />
+                            )}
+                            <p className="text-sm text-muted-foreground">
+                              {event.description}
+                            </p>
+                          </div>
+                        ))}
+                      </>
                     )}
                   </div>
 
-                  {/* Center dot (desktop) */}
-                  <div className="hidden md:flex w-0 flex-col items-center mx-4">
-                    <div className="w-6 h-6 rounded-full bg-electric border-2 border-white shadow-[0_0_14px_rgba(56,189,248,0.9)]" />
+                  {/* CENTER DOT */}
+                  <div className="hidden md:flex items-start justify-center w-0">
+                    <div className="w-6 h-6 bg-electric rounded-full border-2 border-white shadow-[0_0_14px_rgba(56,189,248,0.9)]" />
                   </div>
 
-                  {/* RIGHT SIDE (desktop) */}
-                  <div className="hidden md:flex w-1/2 items-stretch">
+                  {/* RIGHT */}
+                  <div className={`hidden md:block w-1/2 ${!isLeft ? "pl-8" : ""}`}>
                     {!isLeft && (
-                      <div className="w-full pl-6 relative pt-6">
-                        {/* Year label – pulled a bit away from center line */}
-                        <div className="absolute left-10 top-0">
-                          <span className="text-electric font-bold text-3xl">
-                            {block.year}
-                          </span>
-                        </div>
-
-                        {/* Connector from center line */}
-                        <div className="absolute top-[52px] left-0 h-px w-8 bg-electric/60 shadow-[0_0_12px_rgba(56,189,248,0.9)]" />
-
-                        <div className="mt-6 space-y-4">
-                          {filteredEvents.map((event, idx) => (
-                            <div
-                              key={idx}
-                              className="bg-card/50 backdrop-blur-md border border-white/10 rounded-lg p-4 hover:border-electric/40 transition-all"
-                            >
-                              <div className="flex items-center gap-2 mb-1">
-                                <Calendar className="w-4 h-4 text-electric" />
-                                <h4 className="text-lg font-semibold">
-                                  {event.title}
-                                </h4>
-                              </div>
-
-                              {event.image && (
-                                <div className="mt-2 mb-3 rounded-lg overflow-hidden border border-white/10">
-                                  <img
-                                    src={event.image}
-                                    alt={event.title}
-                                    className="w-full h-40 object-cover"
-                                  />
-                                </div>
-                              )}
-
-                              <p className="text-sm text-muted-foreground">
-                                {event.description}
-                              </p>
+                      <>
+                        <h3 className="text-electric font-bold text-3xl mb-4">
+                          {block.year}
+                        </h3>
+                        {filteredEvents.map((event, i) => (
+                          <div
+                            key={i}
+                            className="bg-card/50 backdrop-blur-md border border-white/10 rounded-lg p-4 mb-4"
+                          >
+                            <div className="flex gap-2 mb-2">
+                              <Calendar className="w-4 h-4 text-electric" />
+                              <h4 className="font-semibold">{event.title}</h4>
                             </div>
-                          ))}
-                        </div>
-                      </div>
+                            {event.image && (
+                              <img src={event.image} alt={event.title} className="rounded mb-3" />
+                            )}
+                            <p className="text-sm text-muted-foreground">
+                              {event.description}
+                            </p>
+                          </div>
+                        ))}
+                      </>
                     )}
+                  </div>
+
+                  {/* MOBILE */}
+                  <div className="md:hidden">
+                    <h3 className="text-electric font-bold text-2xl mb-4">
+                      {block.year}
+                    </h3>
+                    {filteredEvents.map((event, i) => (
+                      <div
+                        key={i}
+                        className="bg-card/50 backdrop-blur-md border border-white/10 rounded-lg p-4 mb-4"
+                      >
+                        <div className="flex gap-2 mb-2">
+                          <Calendar className="w-4 h-4 text-electric" />
+                          <h4 className="font-semibold">{event.title}</h4>
+                        </div>
+                        {event.image && (
+                          <img src={event.image} alt={event.title} className="rounded mb-3" />
+                        )}
+                        <p className="text-sm text-muted-foreground">
+                          {event.description}
+                        </p>
+                      </div>
+                    ))}
                   </div>
                 </div>
               );
             })}
           </div>
-        </div>
-
-        {/* Back Button → back to events section on home */}
-        <div className="mt-12 text-center">
-          <button
-            onClick={() => navigate("/", { state: { scrollTo: "events" } })}
-            className="inline-flex items-center gap-2 text-electric hover:text-neon transition-all text-lg font-semibold"
-          >
-            Back to Events
-            <ArrowRightCircle className="w-5 h-5" />
-          </button>
         </div>
       </div>
     </section>
