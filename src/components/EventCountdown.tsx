@@ -10,8 +10,8 @@ const EventCountdown = () => {
   });
 
   // Set next event date (example: 30 days from now)
-  const nextEventDate = new Date();
-  nextEventDate.setDate(nextEventDate.getDate() + 30);
+ const nextEventDate = new Date(2026, 1, 26, 9, 0, 0); 
+  nextEventDate.setDate(nextEventDate.getDate() );
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -86,7 +86,7 @@ const EventCountdown = () => {
               <div>
                 <div className="font-semibold text-vibranium mb-1">Date</div>
                 <div className="text-muted-foreground">
-                  {nextEventDate.toLocaleDateString()}
+                  {nextEventDate.toLocaleDateString("en-GB", { day: "numeric",month: "short",year: "numeric",})}
                 </div>
               </div>
               <div>
@@ -95,7 +95,7 @@ const EventCountdown = () => {
               </div>
               <div>
                 <div className="font-semibold text-silver mb-1">Venue</div>
-                <div className="text-muted-foreground">Tech Hub Central</div>
+                <div className="text-muted-foreground"> Thadomal Shahani Engineering College,Bandra(W),Mumbai  </div>
               </div>
             </div>
           </div>
