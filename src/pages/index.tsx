@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom"; // ✅ ADDED
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/Hero";
 import EventCountdown from "@/components/EventCountdown";
@@ -7,34 +8,44 @@ import EventsSection from "@/components/Events";
 import ContactSection from "@/components/Contact";
 import PastSponsors from "@/components/PastSponsors";
 
-import { Instagram, Linkedin } from "lucide-react";
-
 const Index = () => {
   const [activeSection, setActiveSection] = useState("home");
-
-  const socialLinks = {
-     instagram: "https://www.instagram.com/electroverse.comm_tsec/",
-    linkedin: "https://www.linkedin.com/company/electroverse-comm-tsec/"
-  };
+  const location = useLocation(); // ✅ ADDED
 
   const handleNavigate = (section: string) => {
     setActiveSection(section);
-    
-    // Smooth scroll to section
+
     const element = document.getElementById(section);
     if (element) {
-      element.scrollIntoView({ 
+      element.scrollIntoView({
         behavior: "smooth",
-        block: "start"
+        block: "start",
       });
     }
   };
 
-  // Update active section based on scroll position
+  // ✅ HANDLE SCROLL WHEN COMING BACK FROM EVENT DETAILS
+  useEffect(() => {
+    const scrollTo = location.state?.scrollTo;
+
+    if (scrollTo) {
+      setTimeout(() => {
+        const element = document.getElementById(scrollTo);
+        if (element) {
+          element.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }
+      }, 100);
+    }
+  }, [location]);
+
+  // ✅ UPDATE ACTIVE SECTION ON SCROLL
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["home", "about", "events", "team", "contact"];
-      const scrollPosition = window.scrollY + 100;
+      const sections = ["home", "about", "events", "contact"];
+      const scrollPosition = window.scrollY + 120;
 
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = document.getElementById(sections[i]);
@@ -52,7 +63,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Navbar activeSection={activeSection} onNavigate={handleNavigate} />
-      
+
       <main>
         <section id="home">
           <HeroSection onNavigate={handleNavigate} />
@@ -67,7 +78,6 @@ const Index = () => {
           <EventsSection />
         </section>
 
-     
         <section id="sponsors">
           <PastSponsors />
         </section>
@@ -76,8 +86,6 @@ const Index = () => {
           <ContactSection />
         </section>
       </main>
-
-      
     </div>
   );
 };
