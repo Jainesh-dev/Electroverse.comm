@@ -32,7 +32,7 @@ const AppRoutes = () => {
     <Suspense fallback={null}>
       <Routes>
         <Route path="/" element={<Index />} />
-        <Route path="/event/:eventName" element={<EventDetails />} />
+        <Route path="/event/:slug" element={<EventDetails />} />
         <Route path="/timeline" element={<FullTimeline />} />
         <Route path="/team" element={<Team />} />
         <Route path="/contact" element={<ContactUs />} />
