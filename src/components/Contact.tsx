@@ -116,7 +116,7 @@ const Footer = () => {
               <a href={socialLinks.linkedin} className="hover:text-purple-400 hover:scale-110 transition">
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a href={socialLinks.linkedin} className="hover:text-purple-400 hover:scale-110 transition">
+              <a href={socialLinks.youtube} className="hover:text-purple-400 hover:scale-110 transition">
                 <Youtube className="w-5 h-5" />
               </a>
             </div>
@@ -135,7 +135,7 @@ const Footer = () => {
 
         {/* BOTTOM BAR */}
         <div className="mt-20 pt-8 border-t border-white/10 text-center text-xs text-gray-500 font-mono">
-          © 2025 ELECTROVERSE. ALL RIGHTS RESERVED.
+          © {new Date().getFullYear()} ELECTROVERSE. ALL RIGHTS RESERVED.
         </div>
 
       </div>

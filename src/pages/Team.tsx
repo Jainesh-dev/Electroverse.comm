@@ -25,8 +25,8 @@ const Team = () => {
   ====================================================== */
 
   const mentors: TeamMember[] = [
-    { id: 101, name: "Dr. Maniroja Edinburg", role: "Head of Department", image: "/mentors/jennifer.webp", linkedin: "#", instagram: "#", github: "#" },
-    { id: 102, name: "Prof. Bharti Ingale", role: "Committee Co-Ordinator", image: "/mentors/michael.webp", linkedin: "#", instagram: "#", github: "#" },
+    { id: 101, name: "Dr. Maniroja Edinburgh", role: "Head of Department", image: "/mentors/jennifer.webp", linkedin: "#", instagram: "#", github: "#" },
+    { id: 102, name: "Prof. Bharati Ingale", role: "Committee Co-Ordinator", image: "/mentors/michael.webp", linkedin: "#", instagram: "#", github: "#" },
     { id: 103, name: "Dr. Manoj Kavedia", role: "Committee Co-Ordinator", image: "/mentors/rachel.webp", linkedin: "#", instagram: "#", github: "#" },
   ];
 
