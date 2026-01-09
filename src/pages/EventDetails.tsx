@@ -8,6 +8,7 @@ import {
   ArrowLeft,
   MapPin,
   Clock,
+  Award,
   BookOpen,
   Users as UsersIcon,
   Cpu,
@@ -47,14 +48,16 @@ const EventDetails = () => {
       description:
         "Electroverse’s flagship 48-hour national level hackathon.",
       detailedDescription:
-        "Techathon 2026 is a 48-hour innovation sprint where teams build impactful solutions using AI, Web3, IoT, and emerging technologies. Participants collaborate under expert mentorship, solve real-world problem statements, and pitch solutions to industry judges.",
-      participants: 200,
+        "Techathon 2026 is a 48-hour inter-college hardware-focused innovation sprint where student teams collaborate to build real-world solutions using electronics, embedded systems, IoT, automation, and emerging technologies. Participants work continuously under expert mentorship, tackle industry-relevant problem statements, and present functional prototypes to a panel of industry judges.",
+      participants: 150,
       color: "vibranium",
       learnings: [
-        "Full-stack system design",
-        "AI & ML model integration",
-        "IoT & hardware prototyping",
-        "Startup-style pitching",
+        "Designing and building electronic circuits from scratch",
+      "Working with microcontrollers and embedded platforms",
+      "Sensor interfacing and actuator control",
+      "Hardware–software integration and debugging",
+      "Power management and component selection",
+      "Rapid prototyping under real-world constraints"
       ],
       experience: [
         "48 hours of continuous hacking",
@@ -63,16 +66,23 @@ const EventDetails = () => {
         "Certificates & prizes",
       ],
       pastWinners: [
-        { name: "Team Quantum", project: "AI Healthcare Platform" },
-        { name: "Byte Crushers", project: "Blockchain Voting System" },
+        { name: "Team CXON", project:""},
+        { name: "Tech Vision", project: "" },
+        { name: "Circuit Paglu", project: "" },
+        { name: "Vision Creator", project: "" },
+        { name: "Electroboomers", project: "" },  
       ],
-      location: "Tech Hub Auditorium, TSEC",
+      location: "Thadomal Shahani Engineering College, Bandra(West)",
       duration: "48 Hours",
       domains: [
-        { title: "Artificial Intelligence", icon: <Brain /> },
-        { title: "Web & Web3", icon: <Globe /> },
-        { title: "IoT & Hardware", icon: <Cpu /> },
-        { title: "Cybersecurity", icon: <Shield /> },
+         { title: "Healthcare & Biomedical Technology", icon: <Brain className="w-5 h-5" /> },
+        { title: "Agriculture & Rural Development", icon: <Globe className="w-5 h-5" /> },
+        { title: "Defense & Security Systems", icon: <Shield className="w-5 h-5" /> },
+        { title: "Robotics & Autonomous Systems", icon: <Cpu className="w-5 h-5" /> },
+        { title: "Immersive & Educational Technologies", icon: <BookOpen className="w-5 h-5" /> },
+        { title: "Energy & Environmental Sustainability", icon: <Zap className="w-5 h-5" /> },
+        { title: "Industrial Automation & Control Systems", icon: <Cpu className="w-5 h-5" /> },
+        { title: "Student Innovation", icon: <UsersIcon className="w-5 h-5" /> },
       ],
     },
   ];
@@ -109,8 +119,7 @@ const EventDetails = () => {
 
         {/* HERO */}
         <div className="relative bg-gradient-to-br from-vibranium/20 via-black to-black
-                        border border-vibranium/30 rounded-3xl
-                        p-6 md:p-10 mb-14 overflow-hidden">
+                        border border-vibranium/30 rounded-3xl p-10 mb-14 overflow-hidden">
 
           <div className="absolute -top-20 -right-20 w-96 h-96 bg-vibranium/10 blur-3xl rounded-full" />
 
@@ -148,6 +157,7 @@ const EventDetails = () => {
           {/* LEFT COLUMN */}
           <div className="lg:col-span-2 space-y-10">
 
+            {/* ABOUT */}
             <section className="bg-card/50 p-8 rounded-2xl border border-white/10">
               <h2 className="text-2xl font-bold mb-4 flex gap-2">
                 <BookOpen className="w-5 h-5 text-electric" />
@@ -158,6 +168,46 @@ const EventDetails = () => {
               </p>
             </section>
 
+            {/* EVENT FLOW */}
+            <section className="bg-card/50 p-8 rounded-2xl border border-white/10">
+              <h2 className="text-2xl font-bold mb-6 flex gap-2">
+                <Clock className="w-5 h-5 text-cyber" />
+                Event Flow & Experience
+              </h2>
+
+              <div className="mb-6">
+                <h3 className="font-semibold text-lg mb-3 text-vibranium">
+                  Schedule Overview
+                </h3>
+                <div className="space-y-2 text-sm text-muted-foreground">
+                   <div>Day 1 – Opening Ceremony & Problem Statement Release</div>
+                    <div>Day 1 – Ideation, System Design & Hardware Planning</div>
+                    <div>Day 1 – Hardware Development & Firmware Coding Begins</div>
+                    <div>Day 2 – Mentor Reviews, Debugging & Prototype Refinement</div>
+                    <div>Day 3 – Final Hardware Testing & Submissions</div> 
+                    <div>Day 3 – Live Demonstrations, Judging & Presentations</div>
+                    <div>Day 3 – Results Announcement & Closing Ceremony</div>
+                </div>
+              </div>
+
+              <div>
+                <h3 className="font-semibold text-lg mb-3 text-vibranium">
+                  What You’ll Experience
+                </h3>
+                <div className="grid sm:grid-cols-2 gap-3">
+                  {event.experience.map((exp, i) => (
+                    <div
+                      key={i}
+                      className="p-3 rounded-lg bg-background/50 border border-white/10 text-sm text-muted-foreground"
+                    >
+                      {exp}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            {/* PAST WINNERS */}
             <section className="bg-card/50 p-8 rounded-2xl border border-white/10">
               <h2 className="text-2xl font-bold mb-4 flex gap-2">
                 <Trophy className="w-5 h-5 text-amber-400" />
@@ -178,13 +228,13 @@ const EventDetails = () => {
             </section>
           </div>
 
-          {/* RIGHT COLUMN — FIXED FOR MOBILE */}
-          <div className="space-y-8 lg:sticky lg:top-28">
+          {/* RIGHT COLUMN */}
+          <div className="space-y-8 sticky top-28 h-fit">
 
+            {/* REGISTRATION */}
             <div className="bg-gradient-to-br from-card/80 to-card
                             border border-vibranium/30 rounded-2xl p-6">
               <h3 className="text-2xl font-bold mb-3">Register</h3>
-
               <p className="text-sm text-muted-foreground mb-4">
                 Registrations for Techathon 2026 will open soon.
               </p>
@@ -203,6 +253,7 @@ const EventDetails = () => {
               </div>
             </div>
 
+            {/* DOMAINS */}
             <div className="bg-card/50 p-6 rounded-2xl border border-white/10">
               <h3 className="text-xl font-bold mb-4">Domains</h3>
 
