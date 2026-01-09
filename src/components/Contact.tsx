@@ -116,7 +116,7 @@ const Footer = () => {
               <a href={socialLinks.linkedin} className="hover:text-purple-400 hover:scale-110 transition">
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a href={socialLinks.linkedin} className="hover:text-purple-400 hover:scale-110 transition">
+              <a href={socialLinks.youtube} className="hover:text-purple-400 hover:scale-110 transition">
                 <Youtube className="w-5 h-5" />
               </a>
             </div>
