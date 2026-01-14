@@ -5,6 +5,7 @@ import NotFound from "./pages/NotFound";
 import Loading from "./components/ui/Loading";
 import EventDetails from "./pages/EventDetails";
 import Team from "./pages/Team";
+import Techathon from "./pages/Techathon";
 
 const ContactUs = lazy(() => import("./pages/ContactUs"));
 const FullTimeline = lazy(() => import("./pages/FullTimeline"));
@@ -36,6 +37,7 @@ const AppRoutes = () => {
         <Route path="/timeline" element={<FullTimeline />} />
         <Route path="/team" element={<Team />} />
         <Route path="/contact" element={<ContactUs />} />
+        <Route path="/techathon" element={<Techathon />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
