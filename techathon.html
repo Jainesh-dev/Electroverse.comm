@@ -60,6 +60,36 @@
             transform: translateY(-5px);
         }
 
+        /* DOMAIN HOVER FEATURE */
+        .domain-card {
+            position: relative;
+            overflow: hidden;
+            min-height: 160px;
+            justify-content: center;
+        }
+        .domain-info {
+            transition: transform 0.4s ease;
+        }
+        .domain-desc {
+            position: absolute;
+            bottom: -100%;
+            left: 0;
+            width: 100%;
+            padding: 1rem;
+            background: rgba(188, 19, 254, 0.1);
+            transition: bottom 0.4s ease;
+            font-size: 11px;
+            color: #ccc;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .domain-card:hover .domain-info {
+            transform: translateY(-25px);
+        }
+        .domain-card:hover .domain-desc {
+            bottom: 0;
+        }
+
         /* TIMELINE */
         .timeline-container { position: relative; padding-left: 3rem; }
         .timeline-line { position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background: rgba(188, 19, 254, 0.1); }
@@ -76,6 +106,18 @@
         .carousel-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1s ease-in-out; }
         .carousel-slide.active { opacity: 1; }
 
+        /* REGISTRATION OVERLAY */
+        #reg-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+        }
+
         .glitch:hover { animation: glitch-anim 0.3s infinite; }
         @keyframes glitch-anim {
             0% { transform: translate(0); text-shadow: -2px 0 var(--purple), 2px 0 var(--yellow); }
@@ -85,6 +127,17 @@
     </style>
 </head>
 <body>
+
+    <div id="reg-overlay" onclick="toggleRegister()">
+        <div class="tech-card p-10 max-w-lg w-full mx-4 text-center relative" onclick="event.stopPropagation()">
+            <button onclick="toggleRegister()" class="absolute top-4 right-4 text-gray-500 hover:text-white"><i class="fas fa-times"></i></button>
+            <h2 class="cyber text-2xl text-yellow-400 mb-4 italic">ESTABLISH_LINK</h2>
+            <p class="text-gray-400 mb-8 text-sm tracking-widest uppercase">Click below to open the official registration node.</p>
+            <a href="PASTE_YOUR_GOOGLE_FORM_URL_HERE" target="_blank" class="inline-block bg-purple-600 px-10 py-4 cyber text-white font-bold tracking-[0.3em] hover:bg-yellow-400 hover:text-black transition-all">
+                ACCESS_FORM_v4.0
+            </a>
+        </div>
+    </div>
 
     <nav class="fixed top-0 w-full flex justify-between items-center px-6 md:px-12">
         <div class="flex items-center gap-4">
@@ -148,37 +201,61 @@
     <section id="domains" class="max-w-6xl mx-auto py-24 px-6">
         <h2 class="cyber text-3xl text-center mb-16 tracking-[0.4em] text-white uppercase">Exploration <span class="text-purple-500">Domains</span></h2>
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="tech-card p-6 flex flex-col items-center text-center gap-4">
-                <i class="fas fa-microscope text-purple-500 text-3xl"></i>
-                <h4 class="cyber text-[10px] text-white uppercase tracking-widest">Healthcare & Biomedical</h4>
+            <div class="tech-card domain-card p-6 flex flex-col items-center text-center gap-4">
+                <div class="domain-info">
+                    <i class="fas fa-microscope text-purple-500 text-3xl mb-2"></i>
+                    <h4 class="cyber text-[10px] text-white uppercase tracking-widest">Healthcare & Biomedical</h4>
+                </div>
+                <div class="domain-desc">Smart diagnostics & medical hardware.</div>
             </div>
-            <div class="tech-card p-6 flex flex-col items-center text-center gap-4">
-                <i class="fas fa-seedling text-purple-500 text-3xl"></i>
-                <h4 class="cyber text-[10px] text-white uppercase tracking-widest">Agriculture & Rural</h4>
+            <div class="tech-card domain-card p-6 flex flex-col items-center text-center gap-4">
+                <div class="domain-info">
+                    <i class="fas fa-seedling text-purple-500 text-3xl mb-2"></i>
+                    <h4 class="cyber text-[10px] text-white uppercase tracking-widest">Agriculture & Rural</h4>
+                </div>
+                <div class="domain-desc">Agri-tech & rural infrastructure tools.</div>
             </div>
-            <div class="tech-card p-6 flex flex-col items-center text-center gap-4">
-                <i class="fas fa-shield-halved text-purple-500 text-3xl"></i>
-                <h4 class="cyber text-[10px] text-white uppercase tracking-widest">Defense & Security</h4>
+            <div class="tech-card domain-card p-6 flex flex-col items-center text-center gap-4">
+                <div class="domain-info">
+                    <i class="fas fa-shield-halved text-purple-500 text-3xl mb-2"></i>
+                    <h4 class="cyber text-[10px] text-white uppercase tracking-widest">Defense & Security</h4>
+                </div>
+                <div class="domain-desc">Surveillance & protective systems.</div>
             </div>
-            <div class="tech-card p-6 flex flex-col items-center text-center gap-4">
-                <i class="fas fa-robot text-purple-500 text-3xl"></i>
-                <h4 class="cyber text-[10px] text-white uppercase tracking-widest">Robotics & Autonomous</h4>
+            <div class="tech-card domain-card p-6 flex flex-col items-center text-center gap-4">
+                <div class="domain-info">
+                    <i class="fas fa-robot text-purple-500 text-3xl mb-2"></i>
+                    <h4 class="cyber text-[10px] text-white uppercase tracking-widest">Robotics & Autonomous</h4>
+                </div>
+                <div class="domain-desc">Drones, rovers & self-driving tech.</div>
             </div>
-            <div class="tech-card p-6 flex flex-col items-center text-center gap-4">
-                <i class="fas fa-vr-cardboard text-purple-500 text-3xl"></i>
-                <h4 class="cyber text-[10px] text-white uppercase tracking-widest">Immersive Tech</h4>
+            <div class="tech-card domain-card p-6 flex flex-col items-center text-center gap-4">
+                <div class="domain-info">
+                    <i class="fas fa-vr-cardboard text-purple-500 text-3xl mb-2"></i>
+                    <h4 class="cyber text-[10px] text-white uppercase tracking-widest">Immersive Tech</h4>
+                </div>
+                <div class="domain-desc">AR/VR hardware & haptic feedback.</div>
             </div>
-            <div class="tech-card p-6 flex flex-col items-center text-center gap-4">
-                <i class="fas fa-bolt text-purple-500 text-3xl"></i>
-                <h4 class="cyber text-[10px] text-white uppercase tracking-widest">Sustainability</h4>
+            <div class="tech-card domain-card p-6 flex flex-col items-center text-center gap-4">
+                <div class="domain-info">
+                    <i class="fas fa-bolt text-purple-500 text-3xl mb-2"></i>
+                    <h4 class="cyber text-[10px] text-white uppercase tracking-widest">Sustainability</h4>
+                </div>
+                <div class="domain-desc">Renewable energy & waste reduction.</div>
             </div>
-            <div class="tech-card p-6 flex flex-col items-center text-center gap-4">
-                <i class="fas fa-industry text-purple-500 text-3xl"></i>
-                <h4 class="cyber text-[10px] text-white uppercase tracking-widest">Industrial Automation</h4>
+            <div class="tech-card domain-card p-6 flex flex-col items-center text-center gap-4">
+                <div class="domain-info">
+                    <i class="fas fa-industry text-purple-500 text-3xl mb-2"></i>
+                    <h4 class="cyber text-[10px] text-white uppercase tracking-widest">Industrial Automation</h4>
+                </div>
+                <div class="domain-desc">Industry 4.0 & manufacturing logic.</div>
             </div>
-            <div class="tech-card p-6 flex flex-col items-center text-center gap-4">
-                <i class="fas fa-lightbulb text-purple-500 text-3xl"></i>
-                <h4 class="cyber text-[10px] text-white uppercase tracking-widest">Student Innovation</h4>
+            <div class="tech-card domain-card p-6 flex flex-col items-center text-center gap-4">
+                <div class="domain-info">
+                    <i class="fas fa-lightbulb text-purple-500 text-3xl mb-2"></i>
+                    <h4 class="cyber text-[10px] text-white uppercase tracking-widest">Student Innovation</h4>
+                </div>
+                <div class="domain-desc">Open category for wildcards.</div>
             </div>
         </div>
     </section>
@@ -219,9 +296,9 @@
         <div class="timeline-container">
             <div class="timeline-line"></div>
             <div class="timeline-fill" id="p-bar"></div>
-            <div class="mb-20 relative t-item" data-date="2026-02-15"><div class="dot active-dot"></div><div class="tech-card p-6 ml-6"><h4 class="cyber text-purple-400">Feb 15: Registration Start</h4><p class="text-sm text-gray-400 mt-2 uppercase">Official node activation for teams.</p></div></div>
-            <div class="mb-20 relative t-item" data-date="2026-03-01"><div class="dot"></div><div class="tech-card p-6 ml-6"><h4 class="cyber text-white">Mar 01: Idea Screening</h4><p class="text-sm text-gray-400 mt-2 uppercase">Abstract and schematic validation.</p></div></div>
-            <div class="mb-2 relative t-item" data-date="2026-03-10"><div class="dot"></div><div class="tech-card p-6 ml-6"><h4 class="cyber text-yellow-400 font-bold">Mar 10: The Grand Event</h4><p class="text-sm text-gray-400 mt-2 uppercase">24-hour non-stop hardware sprint.</p></div></div>
+            <div class="mb-20 relative t-item" data-date="2026-01-20"><div class="dot active-dot"></div><div class="tech-card p-6 ml-6"><h4 class="cyber text-purple-400">Jan 20: Registration Start</h4><p class="text-sm text-gray-400 mt-2 uppercase">Official node activation for teams.</p></div></div>
+            <div class="mb-20 relative t-item" data-date="2026-02-26"><div class="dot"></div><div class="tech-card p-6 ml-6"><h4 class="cyber text-white">Feb 26: Idea Screening</h4><p class="text-sm text-gray-400 mt-2 uppercase">Abstract and schematic validation.</p></div></div>
+            <div class="mb-2 relative t-item" data-date="2026-02-27"><div class="dot"></div><div class="tech-card p-6 ml-6"><h4 class="cyber text-yellow-400 font-bold">Feb 27: The Grand Event</h4><p class="text-sm text-gray-400 mt-2 uppercase">24-hour non-stop hardware sprint.</p></div></div>
         </div>
     </section>
 
@@ -254,6 +331,16 @@
     </footer>
 
     <script>
+        // TOGGLE REGISTRATION OVERLAY
+        function toggleRegister() {
+            const overlay = document.getElementById('reg-overlay');
+            if (overlay.style.display === 'flex') {
+                overlay.style.display = 'none';
+            } else {
+                overlay.style.display = 'flex';
+            }
+        }
+
         // CAROUSEL
         let currentSlide = 0;
         const slides = document.querySelectorAll('.carousel-slide');
