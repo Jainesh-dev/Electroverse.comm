@@ -15,9 +15,10 @@
             --glow-purple: rgba(188, 19, 254, 0.6);
         }
 
+        html { scroll-behavior: smooth; }
+
         body {
             background-color: #050505;
-            /* DOTTED GRID BACKGROUND */
             background-image: radial-gradient(var(--cyber-purple) 0.8px, transparent 0);
             background-size: 25px 25px;
             color: #e2e8f0;
@@ -36,7 +37,6 @@
             border-bottom: 2px solid var(--cyber-purple);
         }
 
-        /* INTENSE BROCHURE GLOW EFFECT */
         .brochure-card {
             transition: all 0.4s ease-in-out;
             border: 1px solid rgba(188, 19, 254, 0.2);
@@ -53,11 +53,27 @@
             background: var(--cyber-purple);
             clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
             transition: 0.3s;
+            display: inline-block;
+            color: white;
         }
         .btn-cyber:hover {
             background: var(--cyber-yellow);
             color: black;
             box-shadow: 0 0 20px var(--cyber-yellow);
+        }
+
+        .timeline-line {
+            position: relative;
+        }
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--cyber-purple), var(--cyber-yellow));
+            opacity: 0.3;
         }
     </style>
 </head>
@@ -68,71 +84,196 @@
             <img src="https://www.electroverse-comm.in/static/media/logo.8d2d6c1e.png" alt="Logo" class="h-10">
             <span class="cyber-font font-bold text-white hidden md:block tracking-widest uppercase text-sm">Electroverse</span>
         </div>
+        <div class="hidden lg:flex gap-8 text-[10px] cyber-font tracking-widest">
+            <a href="#home" class="hover:text-purple-400 transition-colors">HOME</a>
+            <a href="#about" class="hover:text-purple-400 transition-colors">ABOUT</a>
+            <a href="#domains" class="hover:text-purple-400 transition-colors">DOMAINS</a>
+            <a href="#timeline" class="hover:text-purple-400 transition-colors">TIMELINE</a>
+            <a href="#rewards" class="hover:text-purple-400 transition-colors">REWARDS</a>
+        </div>
         <a href="YOUR_GOOGLE_FORM_LINK" class="btn-cyber px-8 py-2 font-bold italic tracking-tighter">REGISTER_NOW</a>
     </nav>
 
-    <header class="pt-48 pb-10 text-center">
+    <header id="home" class="pt-48 pb-20 text-center relative">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-96 bg-purple-600/10 blur-[120px] -z-10"></div>
         <h1 class="cyber-font text-6xl md:text-8xl font-bold mb-2 italic uppercase">
             <span class="text-white">Tech</span><span class="neon-text-purple">athon 4.0</span>
         </h1>
         <p class="neon-text-yellow tracking-[0.5em] text-xs md:text-sm font-bold uppercase">// The Hardware Revolution //</p>
     </header>
 
-    <section class="max-w-6xl mx-auto py-16 px-6">
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            
-            <div class="border-l-2 border-purple-500 bg-purple-900/10 p-6 backdrop-blur-sm">
-                <h2 class="cyber-font text-xl mb-4 text-white uppercase">The Concept</h2>
-                <p class="text-gray-400 text-sm leading-relaxed">
-                    Techathon 4.0 is a 24-hour high-octane hardware hackathon. It’s where engineers move beyond simulations to build physical, tangible solutions for real-world industrial and social problems.
+    <section id="about" class="max-w-6xl mx-auto py-20 px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div class="border-l-4 border-purple-500 pl-8 bg-purple-900/5 p-8 backdrop-blur-sm">
+                <h2 class="cyber-font text-3xl mb-6 text-white uppercase">The Concept</h2>
+                <p class="text-gray-400 leading-relaxed mb-6">
+                    Techathon 4.0 is a 24-hour high-octane hardware hackathon. It’s where engineers move beyond simulations to build physical, tangible solutions for real-world industrial and social problems. 
                 </p>
-            </div>
-
-            <div class="border-l-2 border-yellow-400 bg-yellow-900/5 p-6 backdrop-blur-sm">
-                <h2 class="cyber-font text-xl mb-4 text-white uppercase">System Tracks</h2>
-                <div class="grid grid-cols-2 gap-2">
-                    <span class="text-[10px] cyber-font text-yellow-400 border border-yellow-400/30 px-2 py-1">EMBEDDED SYSTEMS</span>
-                    <span class="text-[10px] cyber-font text-yellow-400 border border-yellow-400/30 px-2 py-1">IOT & ROBOTICS</span>
-                    <span class="text-[10px] cyber-font text-yellow-400 border border-yellow-400/30 px-2 py-1">CLEAN ENERGY</span>
-                    <span class="text-[10px] cyber-font text-yellow-400 border border-yellow-400/30 px-2 py-1">AUTOMATION</span>
+                <div class="flex gap-4">
+                    <div class="text-center">
+                        <span class="block text-2xl font-bold text-white cyber-font">24H</span>
+                        <span class="text-[10px] text-purple-400 uppercase tracking-widest">Hacking</span>
+                    </div>
+                    <div class="text-center border-l border-white/10 pl-4">
+                        <span class="block text-2xl font-bold text-white cyber-font">CITY</span>
+                        <span class="text-[10px] text-purple-400 uppercase tracking-widest">Level</span>
+                    </div>
                 </div>
             </div>
-
-            <div class="border-l-2 border-purple-500 bg-purple-900/10 p-6 backdrop-blur-sm">
-                <h2 class="cyber-font text-xl mb-4 text-white uppercase">The Impact</h2>
-                <p class="text-gray-400 text-sm leading-relaxed">
-                    Participants don't just win prizes; they earn a spot on our Wall of Fame, gain industry exposure, and join a network of elite hardware innovators across the city.
-                </p>
+            
+            <div class="space-y-4">
+                <h2 class="cyber-font text-xl text-yellow-400 uppercase mb-4 tracking-tighter">// Why Participate?</h2>
+                <div class="grid grid-cols-1 gap-3">
+                    <div class="bg-white/5 p-4 border border-white/10 flex items-center gap-4 hover:bg-purple-900/20 transition-all">
+                        <i class="fas fa-microchip text-purple-500 text-xl"></i>
+                        <span class="text-sm font-bold">Access to Industrial-Grade Hardware Kits</span>
+                    </div>
+                    <div class="bg-white/5 p-4 border border-white/10 flex items-center gap-4 hover:bg-purple-900/20 transition-all">
+                        <i class="fas fa-users text-purple-500 text-xl"></i>
+                        <span class="text-sm font-bold">Networking with Elite Industry Mentors</span>
+                    </div>
+                    <div class="bg-white/5 p-4 border border-white/10 flex items-center gap-4 hover:bg-purple-900/20 transition-all">
+                        <i class="fas fa-rocket text-purple-500 text-xl"></i>
+                        <span class="text-sm font-bold">Earn a Spot on the Electroverse Wall of Fame</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="relative w-full max-w-6xl mx-auto px-4 py-12">
-        <h2 class="cyber-font text-2xl text-center mb-10 tracking-widest uppercase">Wall of <span class="neon-text-purple">Fame</span></h2>
-        <div class="relative h-[400px] md:h-[550px] w-full overflow-hidden border border-purple-500/50 bg-black">
+    <section id="domains" class="max-w-6xl mx-auto py-20 px-6">
+        <h2 class="cyber-font text-3xl text-center mb-16 text-white uppercase">Operation <span class="neon-text-purple">Domains</span></h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="brochure-card p-6 bg-black/40 border border-purple-900/50 group">
+                <i class="fas fa-brain text-purple-500 mb-4 text-2xl"></i>
+                <h3 class="cyber-font text-xs text-white uppercase leading-tight">Healthcare & Biomedical Technology</h3>
+            </div>
+            <div class="brochure-card p-6 bg-black/40 border border-purple-900/50 group">
+                <i class="fas fa-globe-asia text-purple-500 mb-4 text-2xl"></i>
+                <h3 class="cyber-font text-xs text-white uppercase leading-tight">Agriculture & Rural Development</h3>
+            </div>
+            <div class="brochure-card p-6 bg-black/40 border border-purple-900/50 group">
+                <i class="fas fa-shield-alt text-purple-500 mb-4 text-2xl"></i>
+                <h3 class="cyber-font text-xs text-white uppercase leading-tight">Defense & Security Systems</h3>
+            </div>
+            <div class="brochure-card p-6 bg-black/40 border border-purple-900/50 group">
+                <i class="fas fa-microchip text-purple-500 mb-4 text-2xl"></i>
+                <h3 class="cyber-font text-xs text-white uppercase leading-tight">Robotics & Autonomous Systems</h3>
+            </div>
+            <div class="brochure-card p-6 bg-black/40 border border-purple-900/50 group">
+                <i class="fas fa-vr-cardboard text-purple-500 mb-4 text-2xl"></i>
+                <h3 class="cyber-font text-xs text-white uppercase leading-tight">Immersive & Educational Tech</h3>
+            </div>
+            <div class="brochure-card p-6 bg-black/40 border border-purple-900/50 group">
+                <i class="fas fa-bolt text-purple-500 mb-4 text-2xl"></i>
+                <h3 class="cyber-font text-xs text-white uppercase leading-tight">Energy & Environmental Sustainability</h3>
+            </div>
+            <div class="brochure-card p-6 bg-black/40 border border-purple-900/50 group">
+                <i class="fas fa-cogs text-purple-500 mb-4 text-2xl"></i>
+                <h3 class="cyber-font text-xs text-white uppercase leading-tight">Industrial Automation & Control</h3>
+            </div>
+            <div class="brochure-card p-6 bg-black/40 border border-purple-900/50 group">
+                <i class="fas fa-user-graduate text-purple-500 mb-4 text-2xl"></i>
+                <h3 class="cyber-font text-xs text-white uppercase leading-tight">Student Innovation</h3>
+            </div>
+        </div>
+    </section>
+
+    <section id="timeline" class="max-w-4xl mx-auto py-20 px-6">
+        <h2 class="cyber-font text-3xl text-center mb-16 text-white uppercase">Mission <span class="neon-text-yellow">Timeline</span></h2>
+        <div class="timeline-line space-y-12 ml-4">
+            <div class="relative pl-12">
+                <div class="absolute w-4 h-4 bg-purple-500 left-0 top-1 shadow-[0_0_10px_#bc13fe]"></div>
+                <h4 class="cyber-font text-white uppercase tracking-tighter">Day 01 - 09:00 AM</h4>
+                <p class="text-purple-400 text-sm cyber-font">Reporting & Briefing</p>
+                <p class="text-gray-500 text-xs mt-1 italic">Teams arrive and assemble their gear at the base.</p>
+            </div>
+            <div class="relative pl-12">
+                <div class="absolute w-4 h-4 bg-yellow-400 left-0 top-1 shadow-[0_0_10px_#f0db4f]"></div>
+                <h4 class="cyber-font text-white uppercase tracking-tighter">Day 01 - 11:00 AM</h4>
+                <p class="text-yellow-400 text-sm cyber-font">System Boot - Hacking Starts</p>
+                <p class="text-gray-500 text-xs mt-1 italic">The 24-hour countdown begins for the physical build.</p>
+            </div>
+            <div class="relative pl-12">
+                <div class="absolute w-4 h-4 bg-purple-500 left-0 top-1"></div>
+                <h4 class="cyber-font text-white uppercase tracking-tighter">Day 02 - 11:00 AM</h4>
+                <p class="text-purple-400 text-sm cyber-font">Final Integration</p>
+                <p class="text-gray-500 text-xs mt-1 italic">Coding ends. Hardware lockdown and jury assessment begins.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="rewards" class="bg-purple-900/10 border-y border-purple-500/20 py-20">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="cyber-font text-3xl text-center mb-16 text-white uppercase tracking-widest">Bounty <span class="neon-text-purple">Pool</span></h2>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                <div class="p-4 border-r border-white/5">
+                    <i class="fas fa-coins text-4xl text-yellow-400 mb-4"></i>
+                    <h4 class="cyber-font text-sm uppercase text-white">Cash Prize</h4>
+                    <p class="text-xs text-gray-500 mt-2">Up to ₹XX,XXX</p>
+                </div>
+                <div class="p-4 border-r border-white/5">
+                    <i class="fas fa-medal text-4xl text-purple-500 mb-4"></i>
+                    <h4 class="cyber-font text-sm uppercase text-white">Winner Medals</h4>
+                    <p class="text-xs text-gray-500 mt-2">Custom Crafted</p>
+                </div>
+                <div class="p-4 border-r border-white/5">
+                    <i class="fas fa-chalkboard-teacher text-4xl text-purple-500 mb-4"></i>
+                    <h4 class="cyber-font text-sm uppercase text-white">Mentorship</h4>
+                    <p class="text-xs text-gray-500 mt-2">Industry Access</p>
+                </div>
+                <div class="p-4">
+                    <i class="fas fa-certificate text-4xl text-purple-500 mb-4"></i>
+                    <h4 class="cyber-font text-sm uppercase text-white">Certificates</h4>
+                    <p class="text-xs text-gray-500 mt-2">For All Bravehearts</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto py-20 px-6">
+        <h2 class="cyber-font text-2xl text-center mb-10 tracking-widest uppercase">The Archive <span class="neon-text-purple">3.0</span></h2>
+        <div class="relative h-[400px] md:h-[500px] w-full overflow-hidden border border-purple-500/50 bg-black">
             <div class="carousel-slide absolute inset-0 transition-opacity duration-1000 opacity-100">
-                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070" class="w-full h-full object-cover opacity-50">
-                <div class="absolute bottom-10 left-10 cyber-font text-white bg-purple-600 px-4 py-2 uppercase tracking-tighter">Techathon 3.0 Champions</div>
+                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070" class="w-full h-full object-cover opacity-40">
+                <div class="absolute bottom-10 left-10 cyber-font text-white bg-purple-600 px-4 py-2 uppercase tracking-tighter">Previous Champions</div>
             </div>
             <div class="carousel-slide absolute inset-0 transition-opacity duration-1000 opacity-0">
-                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070" class="w-full h-full object-cover opacity-50">
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070" class="w-full h-full object-cover opacity-40">
                 <div class="absolute bottom-10 left-10 cyber-font text-white bg-purple-600 px-4 py-2 uppercase tracking-tighter">Innovation Gallery</div>
             </div>
-            <button onclick="changeSlide(-1)" class="absolute left-0 top-0 h-full w-16 md:w-20 flex items-center justify-center hover:bg-purple-500/10 text-white z-20"><i class="fas fa-chevron-left text-2xl"></i></button>
-            <button onclick="changeSlide(1)" class="absolute right-0 top-0 h-full w-16 md:w-20 flex items-center justify-center hover:bg-purple-500/10 text-white z-20"><i class="fas fa-chevron-right text-2xl"></i></button>
+            <button onclick="changeSlide(-1)" class="absolute left-0 top-0 h-full w-16 flex items-center justify-center hover:bg-purple-500/10 text-white z-20"><i class="fas fa-chevron-left"></i></button>
+            <button onclick="changeSlide(1)" class="absolute right-0 top-0 h-full w-16 flex items-center justify-center hover:bg-purple-500/10 text-white z-20"><i class="fas fa-chevron-right"></i></button>
         </div>
     </section>
 
     <section class="max-w-4xl mx-auto py-20 px-6 text-center">
-        <div class="brochure-card p-12 bg-gray-900/60 backdrop-blur-lg rounded-sm cursor-pointer">
-            <h2 class="cyber-font text-3xl mb-6 uppercase text-white">Event <span class="neon-text-yellow">Brochure</span></h2>
+        <div class="brochure-card p-12 bg-gray-900/60 backdrop-blur-lg rounded-sm cursor-pointer border-2">
+            <h2 class="cyber-font text-3xl mb-6 uppercase text-white">Download <span class="neon-text-yellow">Intel</span></h2>
             <div class="flex justify-center mb-8">
-                <div class="relative">
-                    <i class="fas fa-file-pdf text-8xl text-yellow-400 drop-shadow-[0_0_15px_#f0db4f]"></i>
-                    <div class="absolute -top-2 -right-2 bg-purple-600 text-[10px] cyber-font px-2 py-1">V4.0</div>
-                </div>
+                <i class="fas fa-file-pdf text-7xl text-yellow-400 drop-shadow-[0_0_15px_#f0db4f]"></i>
             </div>
             <a href="YOUR_BROCHURE_LINK" target="_blank" class="border border-purple-500 text-purple-400 px-12 py-4 hover:bg-purple-500 hover:text-white transition-all uppercase font-bold tracking-[0.3em] text-xs">Access Brochure</a>
+        </div>
+    </section>
+
+    <section id="faq" class="max-w-3xl mx-auto py-20 px-6">
+        <h2 class="cyber-font text-3xl text-center mb-12 text-white uppercase">Common <span class="neon-text-yellow">Queries</span></h2>
+        <div class="space-y-4">
+            <details class="group border border-purple-500/20 bg-white/5 p-4 cursor-pointer">
+                <summary class="cyber-font text-sm uppercase flex justify-between items-center text-white list-none">
+                    Is there a registration fee?
+                    <span class="group-open:rotate-180 transition-transform">▼</span>
+                </summary>
+                <p class="text-gray-400 text-sm mt-4 leading-relaxed italic border-t border-white/10 pt-4">Registration details and any associated fees are listed in the downloadable brochure.</p>
+            </details>
+            <details class="group border border-purple-500/20 bg-white/5 p-4 cursor-pointer">
+                <summary class="cyber-font text-sm uppercase flex justify-between items-center text-white list-none">
+                    What hardware will be provided?
+                    <span class="group-open:rotate-180 transition-transform">▼</span>
+                </summary>
+                <p class="text-gray-400 text-sm mt-4 leading-relaxed italic border-t border-white/10 pt-4">We provide standard kits for the selected domains. Specific components can be requested during the registration phase.</p>
+            </details>
         </div>
     </section>
 
