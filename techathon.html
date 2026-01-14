@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Techathon 4.0 | Electroverse</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap');
+
+        :root {
+            --cyber-purple: #bc13fe;
+            --cyber-yellow: #f0db4f;
+            --glow-purple: rgba(188, 19, 254, 0.6);
+        }
+
+        body {
+            background-color: #050505;
+            /* DOTTED GRID BACKGROUND */
+            background-image: radial-gradient(var(--cyber-purple) 0.8px, transparent 0);
+            background-size: 25px 25px;
+            color: #e2e8f0;
+            font-family: 'Rajdhani', sans-serif;
+            margin: 0;
+            background-attachment: fixed;
+        }
+
+        .cyber-font { font-family: 'Orbitron', sans-serif; }
+        .neon-text-purple { text-shadow: 0 0 10px var(--glow-purple); color: var(--cyber-purple); }
+        .neon-text-yellow { text-shadow: 0 0 10px rgba(240, 219, 79, 0.6); color: var(--cyber-yellow); }
+
+        .glass-panel {
+            background: rgba(10, 2, 20, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 2px solid var(--cyber-purple);
+        }
+
+        /* INTENSE BROCHURE GLOW EFFECT */
+        .brochure-card {
+            transition: all 0.4s ease-in-out;
+            border: 1px solid rgba(188, 19, 254, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        .brochure-card:hover {
+            box-shadow: 0 0 50px var(--glow-purple), inset 0 0 20px var(--glow-purple);
+            border-color: var(--cyber-purple);
+            transform: scale(1.02);
+        }
+
+        .btn-cyber {
+            background: var(--cyber-purple);
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+            transition: 0.3s;
+        }
+        .btn-cyber:hover {
+            background: var(--cyber-yellow);
+            color: black;
+            box-shadow: 0 0 20px var(--cyber-yellow);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="fixed top-0 w-full z-50 glass-panel py-4 px-6 flex justify-between items-center">
+        <div class="flex items-center gap-4">
+            <img src="https://www.electroverse-comm.in/static/media/logo.8d2d6c1e.png" alt="Logo" class="h-10">
+            <span class="cyber-font font-bold text-white hidden md:block tracking-widest uppercase text-sm">Electroverse</span>
+        </div>
+        <a href="YOUR_GOOGLE_FORM_LINK" class="btn-cyber px-8 py-2 font-bold italic tracking-tighter">REGISTER_NOW</a>
+    </nav>
+
+    <header class="pt-48 pb-10 text-center">
+        <h1 class="cyber-font text-6xl md:text-8xl font-bold mb-2 italic uppercase">
+            <span class="text-white">Tech</span><span class="neon-text-purple">athon 4.0</span>
+        </h1>
+        <p class="neon-text-yellow tracking-[0.5em] text-xs md:text-sm font-bold uppercase">// The Hardware Revolution //</p>
+    </header>
+
+    <section class="max-w-6xl mx-auto py-16 px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <div class="border-l-2 border-purple-500 bg-purple-900/10 p-6 backdrop-blur-sm">
+                <h2 class="cyber-font text-xl mb-4 text-white uppercase">The Concept</h2>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Techathon 4.0 is a 24-hour high-octane hardware hackathon. It’s where engineers move beyond simulations to build physical, tangible solutions for real-world industrial and social problems.
+                </p>
+            </div>
+
+            <div class="border-l-2 border-yellow-400 bg-yellow-900/5 p-6 backdrop-blur-sm">
+                <h2 class="cyber-font text-xl mb-4 text-white uppercase">System Tracks</h2>
+                <div class="grid grid-cols-2 gap-2">
+                    <span class="text-[10px] cyber-font text-yellow-400 border border-yellow-400/30 px-2 py-1">EMBEDDED SYSTEMS</span>
+                    <span class="text-[10px] cyber-font text-yellow-400 border border-yellow-400/30 px-2 py-1">IOT & ROBOTICS</span>
+                    <span class="text-[10px] cyber-font text-yellow-400 border border-yellow-400/30 px-2 py-1">CLEAN ENERGY</span>
+                    <span class="text-[10px] cyber-font text-yellow-400 border border-yellow-400/30 px-2 py-1">AUTOMATION</span>
+                </div>
+            </div>
+
+            <div class="border-l-2 border-purple-500 bg-purple-900/10 p-6 backdrop-blur-sm">
+                <h2 class="cyber-font text-xl mb-4 text-white uppercase">The Impact</h2>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Participants don't just win prizes; they earn a spot on our Wall of Fame, gain industry exposure, and join a network of elite hardware innovators across the city.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="relative w-full max-w-6xl mx-auto px-4 py-12">
+        <h2 class="cyber-font text-2xl text-center mb-10 tracking-widest uppercase">Wall of <span class="neon-text-purple">Fame</span></h2>
+        <div class="relative h-[400px] md:h-[550px] w-full overflow-hidden border border-purple-500/50 bg-black">
+            <div class="carousel-slide absolute inset-0 transition-opacity duration-1000 opacity-100">
+                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070" class="w-full h-full object-cover opacity-50">
+                <div class="absolute bottom-10 left-10 cyber-font text-white bg-purple-600 px-4 py-2 uppercase tracking-tighter">Techathon 3.0 Champions</div>
+            </div>
+            <div class="carousel-slide absolute inset-0 transition-opacity duration-1000 opacity-0">
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070" class="w-full h-full object-cover opacity-50">
+                <div class="absolute bottom-10 left-10 cyber-font text-white bg-purple-600 px-4 py-2 uppercase tracking-tighter">Innovation Gallery</div>
+            </div>
+            <button onclick="changeSlide(-1)" class="absolute left-0 top-0 h-full w-16 md:w-20 flex items-center justify-center hover:bg-purple-500/10 text-white z-20"><i class="fas fa-chevron-left text-2xl"></i></button>
+            <button onclick="changeSlide(1)" class="absolute right-0 top-0 h-full w-16 md:w-20 flex items-center justify-center hover:bg-purple-500/10 text-white z-20"><i class="fas fa-chevron-right text-2xl"></i></button>
+        </div>
+    </section>
+
+    <section class="max-w-4xl mx-auto py-20 px-6 text-center">
+        <div class="brochure-card p-12 bg-gray-900/60 backdrop-blur-lg rounded-sm cursor-pointer">
+            <h2 class="cyber-font text-3xl mb-6 uppercase text-white">Event <span class="neon-text-yellow">Brochure</span></h2>
+            <div class="flex justify-center mb-8">
+                <div class="relative">
+                    <i class="fas fa-file-pdf text-8xl text-yellow-400 drop-shadow-[0_0_15px_#f0db4f]"></i>
+                    <div class="absolute -top-2 -right-2 bg-purple-600 text-[10px] cyber-font px-2 py-1">V4.0</div>
+                </div>
+            </div>
+            <a href="YOUR_BROCHURE_LINK" target="_blank" class="border border-purple-500 text-purple-400 px-12 py-4 hover:bg-purple-500 hover:text-white transition-all uppercase font-bold tracking-[0.3em] text-xs">Access Brochure</a>
+        </div>
+    </section>
+
+    <footer class="py-20 border-t border-purple-900/30 text-center bg-black/90">
+        <h2 class="cyber-font text-xl text-white mb-8 tracking-[0.2em]">Contact Node</h2>
+        <div class="flex justify-center gap-12 mb-8">
+            <a href="mailto:electroverse.tsec@gmail.com" class="hover:neon-text-yellow transition-all"><i class="fas fa-envelope text-3xl"></i></a>
+            <a href="https://instagram.com/electroverse_tsec" target="_blank" class="hover:neon-text-purple transition-all"><i class="fab fa-instagram text-3xl"></i></a>
+        </div>
+        <p class="text-gray-600 text-[10px] tracking-[0.5em] uppercase italic">© 2025 Electroverse Committee - TSEC</p>
+    </footer>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        function showSlide(index) {
+            slides.forEach(s => s.style.opacity = '0');
+            if (index >= slides.length) currentSlide = 0;
+            else if (index < 0) currentSlide = slides.length - 1;
+            else currentSlide = index;
+            slides[currentSlide].style.opacity = '1';
+        }
+        function changeSlide(n) { showSlide(currentSlide + n); }
+        setInterval(() => changeSlide(1), 5000);
+    </script>
+</body>
+</html>
