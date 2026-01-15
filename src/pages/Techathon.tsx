@@ -78,7 +78,11 @@ const Navbar = () => {
             href={MAIN_WEBSITE_URL}
             className="flex items-center gap-2 cursor-pointer group"
           >
-            <Hexagon className="text-yellow-400 fill-yellow-400/10 group-hover:rotate-90 transition-transform duration-500" />
+           <img
+                  src="/logo.webp"
+                  alt="Electroverse Logo"
+                  className="w-12 sm:w-14 object-contain"
+                />
             <span className="font-cyber font-bold text-white tracking-widest text-lg group-hover:text-yellow-400 transition-colors">
               Electroverse.comm
             </span>
@@ -171,10 +175,10 @@ const HeroSection = () => {
 
       <div className="relative z-10 flex flex-col items-center leading-none select-none">
         <motion.h1 style={{ y: y2 }} className="font-cyber text-[15vw] md:text-[180px] font-black text-yellow-400 tracking-tighter mix-blend-difference z-20">
-          TECH
+          TECH-A-
         </motion.h1>
         <motion.h1 style={{ y: y1 }} className="font-cyber text-[15vw] md:text-[180px] font-black text-fuchsia-500 tracking-tighter -mt-[4vw] md:-mt-[60px] mix-blend-difference z-10">
-          ATHON
+          THON
         </motion.h1>
         <motion.div 
           initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.5, type: "spring" }}
@@ -268,7 +272,11 @@ const WhySection = () => {
             </div>
             <div className="space-y-4">
               <h3 className={`text-2xl font-bold font-cyber flex items-center gap-3 ${card.color}`}>
-                <Hexagon size={20} className="fill-current" />
+                <img
+                  src="/logo.webp"
+                  alt="Electroverse Logo"
+                  className="w-12 sm:w-14 object-contain"
+                />
                 {card.title}
               </h3>
               <p className="text-gray-400 font-hud text-lg leading-relaxed max-w-2xl">{card.desc}</p>
@@ -427,57 +435,90 @@ const CTASection = () => {
 const Footer = () => (
   <footer className="border-t border-white/10 bg-black pt-20 pb-10">
     <div className="max-w-7xl mx-auto px-6">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
-        
-        {/* Brand */}
-        <div>
-          <div className="flex items-center gap-2 mb-6">
-            <Hexagon className="text-fuchsia-600 w-8 h-8 fill-fuchsia-600/20" />
-            <span className="font-cyber font-bold text-2xl text-white tracking-widest">TECHATHON v4.0</span>
+
+      {/* MAIN GRID */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-20 mb-16">
+
+        {/* BRAND */}
+        <div className="flex flex-col items-center md:items-start text-center md:text-left gap-6">
+          <div className="flex items-center gap-3">
+            <img
+                  src="/logo.webp"
+                  alt="Electroverse Logo"
+                  className="w-12 sm:w-14 object-contain"
+                />
+            <span className="font-cyber font-bold text-2xl text-white tracking-widest">
+              TECHATHON 4.0
+            </span>
           </div>
-          <p className="text-gray-400 font-mono text-sm leading-relaxed max-w-xs">
-            The ultimate convergence of code, creativity, and chaos. Join the revolution and build the future.
+
+          <p className="text-gray-400 font-mono text-sm leading-relaxed max-w-sm">
+            The ultimate convergence of code, creativity, and chaos.  
+            Join the revolution and build the future.
           </p>
         </div>
 
-        {/* Links */}
-        <div className="flex flex-col gap-4">
-          <h4 className="font-cyber text-white font-bold tracking-widest mb-2 text-lg">QUICK LINKS</h4>
+        {/* QUICK LINKS */}
+        <div className="flex flex-col items-center gap-4">
+          <h4 className="font-cyber text-white font-bold tracking-widest text-lg mb-2">
+            QUICK LINKS
+          </h4>
+
           {["Mission", "Domains", "Timeline", "Register"].map((item) => (
-             <button key={item} onClick={() => scrollToSection(item.toLowerCase() === 'register' ? 'register' : item.toLowerCase())} className="text-left text-gray-400 hover:text-yellow-400 font-mono text-sm transition-colors w-fit">
-               &gt; {item}
-             </button>
+            <button
+              key={item}
+              onClick={() =>
+                scrollToSection(
+                  item.toLowerCase() === "register"
+                    ? "register"
+                    : item.toLowerCase()
+                )
+              }
+              className="text-gray-400 hover:text-yellow-400 font-mono text-sm transition-colors"
+            >
+              &gt; {item}
+            </button>
           ))}
         </div>
 
-        {/* Contact / Social */}
-        <div>
-          <h4 className="font-cyber text-white font-bold tracking-widest mb-4 text-lg">CONNECT</h4>
-          <div className="flex gap-4 mb-6">
+        {/* CONNECT */}
+        <div className="flex flex-col items-center md:items-end gap-6 text-center md:text-right">
+          <h4 className="font-cyber text-white font-bold tracking-widest text-lg">
+            CONNECT
+          </h4>
+
+          <div className="flex gap-5 justify-center md:justify-end">
             {[Twitter, Instagram, Github, Mail].map((Icon, i) => (
-              <a key={i} href="#" className="w-10 h-10 border border-white/10 flex items-center justify-center text-gray-400 hover:text-black hover:bg-yellow-400 hover:border-yellow-400 transition-all">
+              <a
+                key={i}
+                href="#"
+                className="w-10 h-10 border border-white/10 flex items-center justify-center 
+                           text-gray-400 hover:text-black hover:bg-yellow-400 
+                           hover:border-yellow-400 transition-all"
+              >
                 <Icon size={18} />
               </a>
             ))}
           </div>
-          <div className="text-gray-500 font-mono text-xs">
-            <p>San Francisco, CA // Sector 7G</p>
-            <p>contact@electroverse.io</p>
-          </div>
-        </div>
 
-      </div>
-
-      <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-        <p className="text-gray-600 font-mono text-xs">© 2026 ELECTROVERSE SYSTEMS. ALL RIGHTS RESERVED.</p>
-        <div className="flex gap-6 text-gray-600 font-mono text-xs">
-          <a href="#" className="hover:text-white transition-colors">PRIVACY_PROTOCOL</a>
-          <a href="#" className="hover:text-white transition-colors">TERMS_OF_SERVICE</a>
+          <p className="text-gray-500 font-mono text-xs">
+            tsec.electroverse@gmail.com
+          </p>
         </div>
       </div>
+
+      {/* BOTTOM BAR */}
+      <div className="border-t border-white/5 pt-8 text-center">
+        <p className="text-gray-600 font-mono text-xs">
+          © {new Date().getFullYear()} ELECTROVERSE SYSTEMS. ALL RIGHTS RESERVED.
+        </p>
+      </div>
+
     </div>
   </footer>
 );
+
+
 
 // --- MAIN PAGE ---
 

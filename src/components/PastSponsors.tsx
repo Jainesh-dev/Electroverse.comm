@@ -2,8 +2,8 @@ import { sponsors } from "@/SponsorData/Sponsors";
 
 export default function PastSponsors() {
   return (
-    <section className="py-20 bg-white dark:bg-neutral-950">
-      <div className="max-w-6xl mx-auto px-6">
+    <section className="py-20 dark:bg-neutral-950">
+      <div className=" max-w-6xl mx-auto px-6">
         <h2 className="text-center text-3xl font-semibold mb-10">
           Past Sponsors
         </h2>

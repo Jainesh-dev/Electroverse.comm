@@ -135,7 +135,7 @@ const Team = () => {
             <span className="text-royal">TEAM</span>
           </h1>
           <p className="text-muted-foreground mt-4">
-            The minds powering Electroverse
+            The minds powering Electroverse.Comm
           </p>
         </div>
 

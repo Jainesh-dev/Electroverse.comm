@@ -63,7 +63,7 @@ const Navbar = ({ activeSection, onNavigate }: NavbarProps) => {
             <img src="/logo.webp" alt="Electroverse Logo" className="h-8 w-8" />
           </div>
           <span className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-gray-400 bg-clip-text text-transparent">
-            ELECTROVERSE
+            ELECTROVERSE.COMM
           </span>
         </div>
 

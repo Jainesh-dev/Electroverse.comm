@@ -45,7 +45,7 @@ const Footer = () => {
               {/* TEXT */}
               <div className="space-y-2">
                 <h3 className="font-tech text-lg font-semibold tracking-[0.22em] uppercase">
-                  Electroverse
+                  Electroverse.COMM
                 </h3>
 
                 <p className="text-sm text-gray-400 leading-relaxed max-w-sm">
@@ -54,7 +54,7 @@ const Footer = () => {
                 </p>
 
                 <p className="text-xs text-purple-300/80 uppercase tracking-[0.3em]">
-                  • learn • build • compete • grow •
+                  • learn • build • compete • grow•
                 </p>
               </div>
             </div>
