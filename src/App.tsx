@@ -10,7 +10,6 @@ import Techathon from "./pages/Techathon";
 const ContactUs = lazy(() => import("./pages/ContactUs"));
 const FullTimeline = lazy(() => import("./pages/FullTimeline"));
 
-/* Separate component to access useLocation safely */
 const AppRoutes = () => {
   const location = useLocation();
   const [showLoader, setShowLoader] = useState(true);
@@ -24,7 +23,6 @@ const AppRoutes = () => {
     }
   }, [location.pathname]);
 
-  
   if (showLoader && location.pathname === "/") {
     return <Loading />;
   }
@@ -33,11 +31,16 @@ const AppRoutes = () => {
     <Suspense fallback={null}>
       <Routes>
         <Route path="/" element={<Index />} />
+
+        {/* Normal event pages */}
         <Route path="/event/:slug" element={<EventDetails />} />
+
+        {/* SPECIAL CYBERPUNK STORY PAGE */}
+        <Route path="/event/techathon-2026" element={<Techathon />} />
+
         <Route path="/timeline" element={<FullTimeline />} />
         <Route path="/team" element={<Team />} />
         <Route path="/contact" element={<ContactUs />} />
-        <Route path="/techathon" element={<Techathon />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
