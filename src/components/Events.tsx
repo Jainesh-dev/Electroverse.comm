@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Calendar, Users, Zap, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -13,9 +12,6 @@ interface Event {
   icon: React.ReactNode;
   color: string;
   detailedDescription: string;
-  learnings: string[];
-  experience: string[];
-  pastWinners: { name: string; project: string }[];
 }
 
 const EventsSection = () => {
@@ -30,22 +26,16 @@ const EventsSection = () => {
       description:
         "Our flagship annual hackathon bringing together the best tech minds.",
       detailedDescription:
-        "A 48-hour hackathon where participants solve real-world problems using AI/ML, Web3, IoT, and Sustainable Tech.",
-      participants: 100,
+        "A 48-hour hardware-focused hackathon where teams design, build, and demonstrate real-world electronic and embedded system solutions.",
+      participants: 150,
       icon: <Zap className="w-6 h-6" />,
       color: "vibranium",
-      learnings: [],
-      experience: [],
-      pastWinners: [],
     },
   ];
 
-  const handleEventClick = (eventTitle: string) => {
-    const slug = eventTitle
-      .toLowerCase()
-      .replace(/\s+/g, "-")
-      .replace(/[^a-z0-9-]/g, "");
-    navigate(`/event/${slug}`);
+  // ✅ DIRECTLY ROUTE TO CYBERPUNK PAGE
+  const handleEventClick = () => {
+    navigate("/event/techathon-2026");
   };
 
   return (
@@ -81,8 +71,8 @@ const EventsSection = () => {
           {events.map((event) => (
             <div key={event.id} className="relative group w-full max-w-xl">
               <div className="relative bg-card/50 backdrop-blur-sm border border-vibranium/20 rounded-xl p-6 transition-all duration-300 hover:border-vibranium/40 hover:shadow-lg hover:shadow-vibranium/10">
-                
-                {/* ===== BASE CONTENT ===== */}
+
+                {/* BASE CONTENT */}
                 <div className="transition-opacity duration-300 group-hover:opacity-0">
                   <div className="flex items-start justify-between mb-4">
                     <div className="text-vibranium p-3 rounded-lg bg-vibranium/10">
@@ -114,14 +104,14 @@ const EventsSection = () => {
                     variant="outline_vibranium"
                     size="sm"
                     className="w-full"
-                    onClick={() => handleEventClick(event.title)}
+                    onClick={handleEventClick}
                   >
                     View Full Details
                     <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
                 </div>
 
-                {/* ===== HOVER OVERLAY (NO LAYOUT SHIFT) ===== */}
+                {/* HOVER OVERLAY */}
                 <div
                   className="
                     absolute inset-0 rounded-xl bg-card/95 backdrop-blur-md
@@ -144,9 +134,9 @@ const EventsSection = () => {
                     variant="vibranium"
                     size="sm"
                     className="w-full"
-                    onClick={() => handleEventClick(event.title)}
+                    onClick={handleEventClick}
                   >
-                    View Details
+                    Enter Techathon
                     <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
                 </div>
