@@ -198,6 +198,38 @@ const HeroSection = () => {
   );
 };
 
+const AboutSection = () => (
+  <section id="about" className="py-32 px-6 max-w-6xl mx-auto">
+    <SectionHeader chapter="CHAPTER I" title="ABOUT TECHATHON" />
+
+    <ChamferCard className="border-fuchsia-500/30">
+      <h2 className="text-4xl font-cyber text-yellow-400 mb-6">
+        WHAT IS TECHATHON 4.0?
+      </h2>
+
+      <p className="text-gray-400 font-hud text-lg leading-relaxed">
+        Techathon 4.0 is Electroverse’s flagship 48-hour national-level hackathon,
+        where innovators, developers, and creators collaborate to solve
+        real-world problems using cutting-edge technology.
+      </p>
+      <section id="brochure">
+        <a
+          href="/Techathon_4.0_Brochure.pdf"
+          download
+          className="inline-flex items-center gap-3 mt-6 bg-fuchsia-500 text-black px-8 py-3 font-cyber"
+          >
+        DOWNLOAD BROCHURE
+        </a>
+      </section>
+      
+
+    </ChamferCard>
+    
+  </section>
+  
+);
+
+
 const MissionSection = () => {
   return (
     <section id="mission" className="py-32 px-6 max-w-7xl mx-auto relative">
@@ -236,6 +268,32 @@ const MissionSection = () => {
     </section>
   );
 };
+
+const ProblemStatementsSection = () => (
+  <section id="problems" className="py-32 px-6 max-w-7xl mx-auto">
+    <SectionHeader chapter="CHAPTER V" title="PROBLEM STATEMENTS" />
+
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {[
+        "Smart Healthcare Monitoring",
+        "AI-based Campus Security",
+        "Sustainable Energy Solutions",
+        "Women Safety Systems",
+        "Smart City Automation",
+        "FinTech for Rural India",
+      ].map((title, i) => (
+        <ChamferCard key={i} className="hover:border-yellow-400/40">
+          <h3 className="font-cyber text-lg text-yellow-400 mb-2">
+            PROBLEM {i + 1}
+          </h3>
+          <p className="text-gray-400 font-mono text-sm">
+            {title}
+          </p>
+        </ChamferCard>
+      ))}
+    </div>
+  </section>
+);
 
 const WhySection = () => {
   const cards = [
@@ -327,6 +385,26 @@ const DomainsSection = () => {
     </section>
   );
 };
+const RewardsSection = () => (
+  <section id="rewards" className="py-32 px-6 max-w-6xl mx-auto">
+    <SectionHeader chapter="CHAPTER VI" title="REWARDS & PERKS" />
+
+    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {[
+        { title: "Cash Prizes", desc: "₹1,00,000+ prize pool" },
+        { title: "Mentorship", desc: "Expert industry mentors" },
+        { title: "Certificates", desc: "Participation & Merit" },
+        { title: "Medals & Goodies", desc: "Top teams rewarded" },
+      ].map((r, i) => (
+        <ChamferCard key={i}>
+          <h3 className="font-cyber text-yellow-400 mb-2">{r.title}</h3>
+          <p className="text-gray-400 font-mono text-sm">{r.desc}</p>
+        </ChamferCard>
+      ))}
+    </div>
+  </section>
+);
+
 
 const TimelineSection = () => {
   return (
@@ -431,6 +509,23 @@ const CTASection = () => {
     </section>
   );
 };
+const FAQSection = () => (
+  <section id="faq" className="py-32 px-6 max-w-5xl mx-auto">
+    <SectionHeader chapter="CHAPTER VII" title="FAQ" />
+
+    {[
+      ["Who can participate?", "Students from any discipline."],
+      ["Team size?", "2–4 members per team."],
+      ["Is it free?", "Yes, completely free."],
+      ["Mode?", "Offline / Hybrid."],
+    ].map(([q, a], i) => (
+      <ChamferCard key={i}>
+        <h4 className="font-cyber text-yellow-400">{q}</h4>
+        <p className="text-gray-400 mt-2">{a}</p>
+      </ChamferCard>
+    ))}
+  </section>
+);
 
 const Footer = () => (
   <footer className="border-t border-white/10 bg-black pt-20 pb-10">
@@ -541,11 +636,14 @@ const TechathonPage = () => {
 
       <Navbar />
       <HeroSection />
+      <AboutSection/>
       <MissionSection />
       <WhySection />
+      <RewardsSection/>
       <DomainsSection />
       <TimelineSection />
       <CTASection />
+      <FAQSection/>
       <Footer />
     </div>
   );
