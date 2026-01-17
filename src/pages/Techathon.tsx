@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { Link } from "react-router-dom";
 import { 
   ChevronRight, Hexagon, Shield, Zap, Globe, Target, 
   Brain, Bot, Wifi, Leaf, Lightbulb, Clock, Rocket,
   Twitter, Instagram, Github, Mail, Menu, X
 } from "lucide-react";
 
+
+
+
+
+
 // --- CONFIGURATION ---
 // 1. PASTE YOUR BACKGROUND IMAGE URL HERE
 const HERO_IMAGE_URL = "/public/Tech_BG.png"; 
 
-// 2. PASTE YOUR MAIN WEBSITE URL HERE
-const MAIN_WEBSITE_URL = "https://electroverse.io"; 
 
 // --- HELPER FUNCTIONS ---
 const scrollToSection = (id: string) => {
@@ -74,19 +78,16 @@ const Navbar = () => {
         <div className="px-6 md:px-12 flex justify-between items-center">
           
           {/* Logo - Now Links to Main Website */}
-          <a 
-            href={MAIN_WEBSITE_URL}
+          <Link
+            to="/"
             className="flex items-center gap-2 cursor-pointer group"
           >
-           <img
-                  src="/logo.webp"
-                  alt="Electroverse Logo"
-                  className="w-12 sm:w-14 object-contain"
-                />
+            <Hexagon className="text-yellow-400 fill-yellow-400/10 group-hover:rotate-90 transition-transform duration-500" />
             <span className="font-cyber font-bold text-white tracking-widest text-lg group-hover:text-yellow-400 transition-colors">
               Electroverse.comm
             </span>
-          </a>
+          </Link>
+
 
           {/* Desktop Links */}
           <div className="hidden md:flex items-center gap-8">
@@ -175,10 +176,10 @@ const HeroSection = () => {
 
       <div className="relative z-10 flex flex-col items-center leading-none select-none">
         <motion.h1 style={{ y: y2 }} className="font-cyber text-[15vw] md:text-[180px] font-black text-yellow-400 tracking-tighter mix-blend-difference z-20">
-          TECH-A-
+          TECH
         </motion.h1>
         <motion.h1 style={{ y: y1 }} className="font-cyber text-[15vw] md:text-[180px] font-black text-fuchsia-500 tracking-tighter -mt-[4vw] md:-mt-[60px] mix-blend-difference z-10">
-          THON
+          ATHON
         </motion.h1>
         <motion.div 
           initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.5, type: "spring" }}
@@ -197,38 +198,6 @@ const HeroSection = () => {
     </section>
   );
 };
-
-const AboutSection = () => (
-  <section id="about" className="py-32 px-6 max-w-6xl mx-auto">
-    <SectionHeader chapter="CHAPTER I" title="ABOUT TECHATHON" />
-
-    <ChamferCard className="border-fuchsia-500/30">
-      <h2 className="text-4xl font-cyber text-yellow-400 mb-6">
-        WHAT IS TECHATHON 4.0?
-      </h2>
-
-      <p className="text-gray-400 font-hud text-lg leading-relaxed">
-        Techathon 4.0 is Electroverse’s flagship 48-hour national-level hackathon,
-        where innovators, developers, and creators collaborate to solve
-        real-world problems using cutting-edge technology.
-      </p>
-      <section id="brochure">
-        <a
-          href="/Techathon_4.0_Brochure.pdf"
-          download
-          className="inline-flex items-center gap-3 mt-6 bg-fuchsia-500 text-black px-8 py-3 font-cyber"
-          >
-        DOWNLOAD BROCHURE
-        </a>
-      </section>
-      
-
-    </ChamferCard>
-    
-  </section>
-  
-);
-
 
 const MissionSection = () => {
   return (
@@ -269,32 +238,6 @@ const MissionSection = () => {
   );
 };
 
-const ProblemStatementsSection = () => (
-  <section id="problems" className="py-32 px-6 max-w-7xl mx-auto">
-    <SectionHeader chapter="CHAPTER V" title="PROBLEM STATEMENTS" />
-
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {[
-        "Smart Healthcare Monitoring",
-        "AI-based Campus Security",
-        "Sustainable Energy Solutions",
-        "Women Safety Systems",
-        "Smart City Automation",
-        "FinTech for Rural India",
-      ].map((title, i) => (
-        <ChamferCard key={i} className="hover:border-yellow-400/40">
-          <h3 className="font-cyber text-lg text-yellow-400 mb-2">
-            PROBLEM {i + 1}
-          </h3>
-          <p className="text-gray-400 font-mono text-sm">
-            {title}
-          </p>
-        </ChamferCard>
-      ))}
-    </div>
-  </section>
-);
-
 const WhySection = () => {
   const cards = [
     {
@@ -330,11 +273,7 @@ const WhySection = () => {
             </div>
             <div className="space-y-4">
               <h3 className={`text-2xl font-bold font-cyber flex items-center gap-3 ${card.color}`}>
-                <img
-                  src="/logo.webp"
-                  alt="Electroverse Logo"
-                  className="w-12 sm:w-14 object-contain"
-                />
+                <Hexagon size={20} className="fill-current" />
                 {card.title}
               </h3>
               <p className="text-gray-400 font-hud text-lg leading-relaxed max-w-2xl">{card.desc}</p>
@@ -385,26 +324,6 @@ const DomainsSection = () => {
     </section>
   );
 };
-const RewardsSection = () => (
-  <section id="rewards" className="py-32 px-6 max-w-6xl mx-auto">
-    <SectionHeader chapter="CHAPTER VI" title="REWARDS & PERKS" />
-
-    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-      {[
-        { title: "Cash Prizes", desc: "₹1,00,000+ prize pool" },
-        { title: "Mentorship", desc: "Expert industry mentors" },
-        { title: "Certificates", desc: "Participation & Merit" },
-        { title: "Medals & Goodies", desc: "Top teams rewarded" },
-      ].map((r, i) => (
-        <ChamferCard key={i}>
-          <h3 className="font-cyber text-yellow-400 mb-2">{r.title}</h3>
-          <p className="text-gray-400 font-mono text-sm">{r.desc}</p>
-        </ChamferCard>
-      ))}
-    </div>
-  </section>
-);
-
 
 const TimelineSection = () => {
   return (
@@ -509,111 +428,61 @@ const CTASection = () => {
     </section>
   );
 };
-const FAQSection = () => (
-  <section id="faq" className="py-32 px-6 max-w-5xl mx-auto">
-    <SectionHeader chapter="CHAPTER VII" title="FAQ" />
-
-    {[
-      ["Who can participate?", "Students from any discipline."],
-      ["Team size?", "2–4 members per team."],
-      ["Is it free?", "Yes, completely free."],
-      ["Mode?", "Offline / Hybrid."],
-    ].map(([q, a], i) => (
-      <ChamferCard key={i}>
-        <h4 className="font-cyber text-yellow-400">{q}</h4>
-        <p className="text-gray-400 mt-2">{a}</p>
-      </ChamferCard>
-    ))}
-  </section>
-);
 
 const Footer = () => (
   <footer className="border-t border-white/10 bg-black pt-20 pb-10">
     <div className="max-w-7xl mx-auto px-6">
-
-      {/* MAIN GRID */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-20 mb-16">
-
-        {/* BRAND */}
-        <div className="flex flex-col items-center md:items-start text-center md:text-left gap-6">
-          <div className="flex items-center gap-3">
-            <img
-                  src="/logo.webp"
-                  alt="Electroverse Logo"
-                  className="w-12 sm:w-14 object-contain"
-                />
-            <span className="font-cyber font-bold text-2xl text-white tracking-widest">
-              TECHATHON 4.0
-            </span>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+        
+        {/* Brand */}
+        <div>
+          <div className="flex items-center gap-2 mb-6">
+            <Hexagon className="text-fuchsia-600 w-8 h-8 fill-fuchsia-600/20" />
+            <span className="font-cyber font-bold text-2xl text-white tracking-widest">TECHATHON v4.0</span>
           </div>
-
-          <p className="text-gray-400 font-mono text-sm leading-relaxed max-w-sm">
-            The ultimate convergence of code, creativity, and chaos.  
-            Join the revolution and build the future.
+          <p className="text-gray-400 font-mono text-sm leading-relaxed max-w-xs">
+            The ultimate convergence of code, creativity, and chaos. Join the revolution and build the future.
           </p>
         </div>
 
-        {/* QUICK LINKS */}
-        <div className="flex flex-col items-center gap-4">
-          <h4 className="font-cyber text-white font-bold tracking-widest text-lg mb-2">
-            QUICK LINKS
-          </h4>
-
+        {/* Links */}
+        <div className="flex flex-col gap-4">
+          <h4 className="font-cyber text-white font-bold tracking-widest mb-2 text-lg">QUICK LINKS</h4>
           {["Mission", "Domains", "Timeline", "Register"].map((item) => (
-            <button
-              key={item}
-              onClick={() =>
-                scrollToSection(
-                  item.toLowerCase() === "register"
-                    ? "register"
-                    : item.toLowerCase()
-                )
-              }
-              className="text-gray-400 hover:text-yellow-400 font-mono text-sm transition-colors"
-            >
-              &gt; {item}
-            </button>
+             <button key={item} onClick={() => scrollToSection(item.toLowerCase() === 'register' ? 'register' : item.toLowerCase())} className="text-left text-gray-400 hover:text-yellow-400 font-mono text-sm transition-colors w-fit">
+               &gt; {item}
+             </button>
           ))}
         </div>
 
-        {/* CONNECT */}
-        <div className="flex flex-col items-center md:items-end gap-6 text-center md:text-right">
-          <h4 className="font-cyber text-white font-bold tracking-widest text-lg">
-            CONNECT
-          </h4>
-
-          <div className="flex gap-5 justify-center md:justify-end">
+        {/* Contact / Social */}
+        <div>
+          <h4 className="font-cyber text-white font-bold tracking-widest mb-4 text-lg">CONNECT</h4>
+          <div className="flex gap-4 mb-6">
             {[Twitter, Instagram, Github, Mail].map((Icon, i) => (
-              <a
-                key={i}
-                href="#"
-                className="w-10 h-10 border border-white/10 flex items-center justify-center 
-                           text-gray-400 hover:text-black hover:bg-yellow-400 
-                           hover:border-yellow-400 transition-all"
-              >
+              <a key={i} href="#" className="w-10 h-10 border border-white/10 flex items-center justify-center text-gray-400 hover:text-black hover:bg-yellow-400 hover:border-yellow-400 transition-all">
                 <Icon size={18} />
               </a>
             ))}
           </div>
+          <div className="text-gray-500 font-mono text-xs">
+            <p>San Francisco, CA // Sector 7G</p>
+            <p>contact@electroverse.io</p>
+          </div>
+        </div>
 
-          <p className="text-gray-500 font-mono text-xs">
-            tsec.electroverse@gmail.com
-          </p>
+      </div>
+
+      <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p className="text-gray-600 font-mono text-xs">© 2026 ELECTROVERSE SYSTEMS. ALL RIGHTS RESERVED.</p>
+        <div className="flex gap-6 text-gray-600 font-mono text-xs">
+          <a href="#" className="hover:text-white transition-colors">PRIVACY_PROTOCOL</a>
+          <a href="#" className="hover:text-white transition-colors">TERMS_OF_SERVICE</a>
         </div>
       </div>
-
-      {/* BOTTOM BAR */}
-      <div className="border-t border-white/5 pt-8 text-center">
-        <p className="text-gray-600 font-mono text-xs">
-          © {new Date().getFullYear()} ELECTROVERSE SYSTEMS. ALL RIGHTS RESERVED.
-        </p>
-      </div>
-
     </div>
   </footer>
 );
-
-
 
 // --- MAIN PAGE ---
 
@@ -636,14 +505,11 @@ const TechathonPage = () => {
 
       <Navbar />
       <HeroSection />
-      <AboutSection/>
       <MissionSection />
       <WhySection />
-      <RewardsSection/>
       <DomainsSection />
       <TimelineSection />
       <CTASection />
-      <FAQSection/>
       <Footer />
     </div>
   );
