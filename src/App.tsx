@@ -37,7 +37,6 @@ const AppRoutes = () => {
 
         {/* SPECIAL CYBERPUNK STORY PAGE */}
         <Route path="/event/techathon-2026" element={<Techathon />} />
-
         <Route path="/timeline" element={<FullTimeline />} />
         <Route path="/team" element={<Team />} />
         <Route path="/contact" element={<ContactUs />} />
@@ -56,3 +55,5 @@ const App = () => {
 };
 
 export default App;
+
+
