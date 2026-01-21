@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { 
   motion, 
   useScroll, 
@@ -6,8 +6,7 @@ import {
   useSpring, 
   useVelocity, 
   useAnimationFrame, 
-  useMotionValue,
-  useInView
+  useMotionValue
 } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ReactLenis } from "@studio-freight/react-lenis";
@@ -710,18 +709,18 @@ const playRevealSound = () => {
 };
 
 // Sub-component for individual cards to handle internal animations
-const RewardCard = ({ p, i }) => {
+const RewardCard = React.memo(({ p, i }: any) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
-  const handleClick = () => {
-    setIsFlipped(!isFlipped);
+  const handleClick = useCallback(() => {
+    setIsFlipped(prev => !prev);
     // Play zap sound on click
     try {
       playZapSound();
     } catch (error) {
       console.log("Audio context not available");
     }
-  };
+  }, []);
 
   return (
     <motion.div
@@ -816,7 +815,7 @@ const RewardCard = ({ p, i }) => {
       </motion.div>
     </motion.div>
   );
-};
+});
 
 // 8. TIMELINE
 const TimelineSection = () => (
