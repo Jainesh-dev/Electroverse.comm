@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
+import { Button } from "./ui/button";
 import { Menu, X, Instagram, Linkedin } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -17,6 +17,7 @@ const Navbar = ({ activeSection, onNavigate }: NavbarProps) => {
     { id: "home", label: "Home" },
     { id: "about", label: "About" },
     { id: "events", label: "Events" },
+    { id: "rewards", label: "Rewards" },
     { id: "team", label: "Team" }, // separate page
     { id: "contact", label: "Contact Us" },
   ];

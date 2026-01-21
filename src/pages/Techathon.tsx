@@ -6,15 +6,17 @@ import {
   useSpring, 
   useVelocity, 
   useAnimationFrame, 
-  useMotionValue
+  useMotionValue,
+  useInView
 } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ReactLenis } from "@studio-freight/react-lenis";
 import { 
+  Trophy, FileText, Briefcase, Cloud, Gift,
   ChevronRight, Hexagon, Shield, Zap, Globe, Target, 
   Brain, Bot, Wifi, Leaf, Lightbulb, Clock, Rocket,
-  Twitter, Instagram,Send, Github, Mail, Linkedin,Youtube, Menu, X, Download,
-  Database, Cloud, Glasses, Coins, Cpu, Users, Coffee,
+  Twitter, Instagram, Send, Github, Mail, Linkedin, Youtube, Menu, X, Download,
+  Database, Glasses, Coins, Cpu, Users, Coffee,
   Timer
 } from "lucide-react";
 import { wrap } from "@motionone/utils";
@@ -49,7 +51,7 @@ const SOCIAL_LINKS = [
 ];
 
 // --- ANIMATION VARIANTS ---
-const smoothTransition = { duration: 0.8, ease: [0.25, 0.1, 0.25, 1.0] };
+const smoothTransition = { duration: 0.8 };
 
 const fadeUp = {
   hidden: { opacity: 0, y: 60 },
@@ -199,7 +201,7 @@ const Navbar = () => {
   return (
     <>
       <motion.nav 
-        initial={{ y: -100 }} animate={{ y: 0 }} transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1.0] }}
+        initial={{ y: -100 }} animate={{ y: 0 }} transition={{ duration: 0.8 }}
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 border-b ${isScrolled ? 'bg-[#050505]/90 backdrop-blur-md border-fuchsia-500/20 py-3' : 'bg-transparent border-transparent py-6'}`}
       >
         <div className="px-6 md:px-12 flex justify-between items-center">
@@ -217,6 +219,7 @@ const Navbar = () => {
           <div className="hidden lg:flex items-center gap-8">
             <ScrollToLink target="mission" className="text-xs font-mono text-gray-300 hover:text-fuchsia-400 tracking-widest transition-colors uppercase">MISSION</ScrollToLink>
             <ScrollToLink target="domains" className="text-xs font-mono text-gray-300 hover:text-fuchsia-400 tracking-widest transition-colors uppercase">DOMAINS</ScrollToLink>
+            <ScrollToLink target="rewards" className="text-xs font-mono text-gray-300 hover:text-fuchsia-400 tracking-widest transition-colors uppercase">REWARDS</ScrollToLink>
             <ScrollToLink target="timeline" className="text-xs font-mono text-gray-300 hover:text-fuchsia-400 tracking-widest transition-colors uppercase">TIMELINE</ScrollToLink>
             
             <a href={REGISTRATION_URL} target="_blank" rel="noopener noreferrer" className="bg-yellow-400 text-black font-bold font-cyber px-6 py-2 text-sm tracking-widest hover:bg-white transition-colors hover:shadow-[0_0_15px_rgba(250,204,21,0.6)]" style={{ clipPath: "polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px)" }}>
@@ -507,57 +510,313 @@ const WhySection = () => {
     </section>
   );
 };
-// 6. DOMAINS
-const DomainsSection = () => (
-  <section id="domains" className="py-32 px-6 max-w-7xl mx-auto relative overflow-hidden">
-    <div className="absolute inset-0 top-20 pointer-events-none">
-        <ParallaxText baseVelocity={2}>DOMAINS REALMS SECTORS</ParallaxText>
-        <ParallaxText baseVelocity={-2}>BUILD DEPLOY INNOVATE</ParallaxText>
-    </div>
-    
-    <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-20 relative z-10">
-       <div className="inline-flex items-center gap-4 border border-blue-500/30 px-8 py-2 bg-black/40 backdrop-blur rounded-full mb-8">
-          <span className="text-xs font-mono tracking-[0.3em] text-blue-400 uppercase">CHAPTER III // THE REALMS</span>
-       </div>
-       <h2 className="text-5xl md:text-7xl font-black font-cyber text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 mb-6">CHOOSE YOUR<br/>DOMAIN</h2>
-    </motion.div>
-    
-    <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10 flex-wrap">
-      {[
-        { t: "AI & Neural Nets", i: Brain, c: "yellow" }, { t: "Robotics & Auto", i: Bot, c: "pink" },
-        { t: "IoT & Smart Tech", i: Wifi, c: "purple" }, { t: "Cybersecurity", i: Shield, c: "pink" },
-        { t: "Green Energy", i: Leaf, c: "yellow" }
-       
-       
-      ].map((d, i) => (
-        <motion.div key={i} variants={fadeUp} className="group relative bg-[#050505] border border-white/5 h-72 flex flex-col justify-between p-6 hover:border-white/20 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
-          <div className={`absolute top-0 left-0 w-16 h-16 border-t-4 border-l-4 ${d.c === 'yellow' ? 'border-yellow-400' : d.c === 'pink' ? 'border-fuchsia-500' : 'border-purple-500'} opacity-50 group-hover:opacity-100`}></div>
-          <div className="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center"><d.i size={24} className={d.c === 'yellow' ? 'text-yellow-400' : d.c === 'pink' ? 'text-fuchsia-500' : 'text-purple-500'} /></div>
-          <h3 className="text-xl font-bold font-cyber text-white">{d.t}</h3>
-        </motion.div>
-      ))}
-    </motion.div>
 
-    {/* PERK CARDS */}
-    <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mt-16 relative z-10">
-       {[
-         { icon: Cpu, title: "HARDWARE LAB", desc: "IoT Kits & Rasp Pi provided", c: "yellow" },
-         { icon: Users, title: "24/7 MENTORSHIP", desc: "Expert guidance available", c: "pink" },
-         { icon: Coffee, title: "REFRESHMENTS", desc: "Energy for the marathon", c: "purple" }
-       ].map((card, i) => (
-         <motion.div key={i} variants={fadeUp} className="flex items-center gap-4 bg-[#050505] border border-white/10 p-6 rounded-sm hover:border-white/30 transition-colors">
-            <div className={`p-3 rounded-full bg-${card.c === 'yellow' ? 'yellow-400' : card.c === 'pink' ? 'fuchsia-500' : 'purple-500'}/10 text-${card.c === 'yellow' ? 'yellow-400' : card.c === 'pink' ? 'fuchsia-500' : 'purple-500'}`}>
-               <card.icon size={20} />
+// 6. DOMAINS (DE-CLUTTERED + ANIMATED)
+const DomainsSection = () => {
+  const domainData = [
+    { t: "HEALTHCARE AND BIOMEDICAL TECHNOLOGY", i: Brain, c: "text-yellow-400", b: "border-yellow-400/20", g: "group-hover:border-yellow-400" },
+    { t: "AGRICULTURAL AND RURAL DEVELOPMENT", i: Leaf, c: "text-fuchsia-500", b: "border-fuchsia-500/20", g: "group-hover:border-fuchsia-500" },
+    { t: "DEFENSE AND SECURITY SYSTEMS", i: Shield, c: "text-purple-500", b: "border-purple-500/20", g: "group-hover:border-purple-500" },
+    { t: "ROBOTICS AND AUTONOMOUS SYSTEMS", i: Bot, c: "text-yellow-400", b: "border-yellow-400/20", g: "group-hover:border-yellow-400" },
+    { t: "IMMERSIVE AND EDUCATIONAL TECHNOLOGY", i: Wifi, c: "text-fuchsia-500", b: "border-fuchsia-500/20", g: "group-hover:border-fuchsia-500" },
+    { t: "ENERGY AND ENVIRONMENTAL STABILITY", i: Leaf, c: "text-purple-500", b: "border-purple-500/20", g: "group-hover:border-purple-500" },
+    { t: "INDUSTRIAL AUTOMATION AND CONTROL SYSTEMS", i: Bot, c: "text-yellow-400", b: "border-yellow-400/20", g: "group-hover:border-yellow-400" },
+    { t: "STUDENT INNOVATION", i: Brain, c: "text-fuchsia-500", b: "border-fuchsia-500/20", g: "group-hover:border-fuchsia-500" }
+  ];
+
+  return (
+    <section id="domains" className="py-32 px-6 max-w-7xl mx-auto relative overflow-hidden">
+      <div className="absolute inset-0 top-20 pointer-events-none">
+          <ParallaxText baseVelocity={2}>DOMAINS REALMS SECTORS</ParallaxText>
+          <ParallaxText baseVelocity={-2}>BUILD DEPLOY INNOVATE</ParallaxText>
+      </div>
+      
+      <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-24 relative z-10">
+          <div className="inline-flex items-center gap-4 border border-blue-500/30 px-8 py-2 bg-black/40 backdrop-blur rounded-full mb-8">
+             <span className="text-xs font-mono tracking-[0.3em] text-blue-400 uppercase">CHAPTER III // THE REALMS</span>
+          </div>
+          <h2 className="text-5xl md:text-7xl font-black font-cyber text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 mb-6 uppercase">
+            CHOOSE YOUR<br/>DOMAIN
+          </h2>
+      </motion.div>
+      
+      <motion.div 
+        variants={staggerContainer} 
+        initial="hidden" 
+        whileInView="visible" 
+        viewport={{ once: true, margin: "-50px" }} 
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10"
+      >
+        {domainData.map((d, i) => (
+          <motion.div 
+            key={i} 
+            variants={fadeUp}
+            whileHover="hover"
+            className={`group relative bg-white/[0.02] backdrop-blur-md border ${d.b} h-72 flex flex-col justify-between p-8 transition-all duration-500 hover:bg-white/[0.05] ${d.g}`}
+            style={{ clipPath: "polygon(0 0, 100% 0, 100% 75%, 85% 100%, 0 100%)" }}
+          >
+            {/* 1. ANIMATED SCANLINE */}
+            <motion.div 
+              variants={{ hover: { top: ["-100%", "100%"] } }}
+              transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
+              className="absolute left-0 right-0 h-16 bg-gradient-to-b from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 pointer-events-none"
+            />
+
+            <div className="relative z-10">
+              {/* 2. ICON ANIMATION */}
+              <motion.div 
+                variants={{ hover: { scale: 1.2, rotate: 5 } }}
+                className="w-10 h-10 mb-6 flex items-center justify-center rounded-sm bg-white/5 border border-white/10"
+              >
+                <d.i size={20} className={`${d.c}`} />
+              </motion.div>
+
+              {/* 3. TEXT GLOW ANIMATION */}
+              <h3 className="text-sm md:text-[15px] font-bold font-cyber text-gray-400 group-hover:text-white leading-relaxed tracking-wider uppercase transition-colors duration-300">
+                {d.t}
+              </h3>
             </div>
-            <div>
-               <h4 className="font-cyber font-bold text-white text-sm">{card.title}</h4>
-               <p className="font-mono text-xs text-gray-500">{card.desc}</p>
+
+            <div className="relative z-10 flex justify-between items-end">
+              <span className="font-mono text-[10px] text-gray-600">SECTOR_0{i+1}</span>
+              {/* 4. BAR EXPANSION */}
+              <motion.div 
+                variants={{ hover: { width: "60px" } }}
+                className={`h-[1px] w-8 ${d.c.replace('text', 'bg')} opacity-40 group-hover:opacity-100 transition-all duration-500`} 
+              />
             </div>
-         </motion.div>
-       ))}
+          </motion.div>
+        ))}
+      </motion.div>
+
+      {/* PERK CARDS */}
+      <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mt-16 relative z-10">
+         {[
+           { icon: Cpu, title: "HARDWARE LAB", desc: "IoT Kits & Rasp Pi provided", c: "yellow", textColor: "text-yellow-400", bgColor: "bg-yellow-400/10" },
+           { icon: Users, title: "24/7 MENTORSHIP", desc: "Expert guidance available", c: "pink", textColor: "text-fuchsia-500", bgColor: "bg-fuchsia-500/10" },
+           { icon: Coffee, title: "REFRESHMENTS", desc: "Energy for the marathon", c: "purple", textColor: "text-purple-500", bgColor: "bg-purple-500/10" }
+         ].map((card, i) => (
+           <motion.div key={i} variants={fadeUp} className="flex items-center gap-4 bg-[#050505] border border-white/10 p-6 rounded-sm hover:border-white/30 transition-colors">
+              <div className={`p-3 rounded-full ${card.bgColor} ${card.textColor}`}>
+                 <card.icon size={20} />
+              </div>
+              <div>
+                 <h4 className="font-cyber font-bold text-white text-sm">{card.title}</h4>
+                 <p className="font-mono text-xs text-gray-500">{card.desc}</p>
+              </div>
+           </motion.div>
+         ))}
+      </motion.div>
+    </section>
+  );
+};
+// 7. REWARDS (HUD PROTOCOL ALIGNMENT - EXPLICIT VERSION)
+
+const RewardsSection = () => {
+  const prizes = [
+    { rank: "1ST RUNNER UP", amount: "₹15,000", label: "ALPHA_REWARD", textColor: "text-blue-400", borderColor: "border-blue-500/30", bgColor: "bg-blue-400", glowColor: "bg-blue-500", order: "order-2 md:order-1" },
+    { rank: "WINNER", amount: "₹25,000", label: "PRIME_REWARD", textColor: "text-yellow-400", borderColor: "border-yellow-400/40", bgColor: "bg-yellow-400", glowColor: "bg-yellow-400", order: "order-1 md:order-2", featured: true },
+    { rank: "2ND RUNNER UP", amount: "₹10,000", label: "BETA_REWARD", textColor: "text-orange-500", borderColor: "border-orange-500/30", bgColor: "bg-orange-500", glowColor: "bg-orange-500", order: "order-3 md:order-3" }
+  ];
+
+  return (
+    <motion.section 
+      id="rewards" 
+      className="py-32 px-6 max-w-7xl mx-auto relative overflow-hidden"
+      initial={{ opacity: 0, x: 0, y: 0 }}
+      whileInView={{
+        opacity: 1,
+        x: [0, -10, 10, -10, 10, -5, 5, 0],
+        y: [0, -10, 10, -10, 10, -5, 5, 0]
+      }}
+      transition={{ duration: 0.6, ease: "easeInOut" }}
+      viewport={{ once: true, amount: 0.3 }}
+    >
+      <div className="absolute inset-0 top-20 pointer-events-none opacity-5">
+          <ParallaxText baseVelocity={2}>REWARDS VAULT PRIZES</ParallaxText>
+          <ParallaxText baseVelocity={-2}>WIN COMPETE SUCCEED</ParallaxText>
+      </div>
+      <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-center mb-20 relative z-10">
+        <div className="inline-flex items-center gap-4 border border-yellow-500/30 px-6 py-1 bg-yellow-500/5 backdrop-blur rounded-full mb-6">
+           <span className="text-[10px] font-mono tracking-[0.3em] text-yellow-500 uppercase">VAULT // PRIZE_POOL</span>
+        </div>
+        <h2 className="text-4xl md:text-6xl font-black font-cyber text-white uppercase tracking-tighter">PRIZE POOL PROTOCOL</h2>
+      </motion.div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-end relative z-10">
+        {prizes.map((p, i) => (
+          <RewardCard key={i} p={p} i={i} />
+        ))}
+      </div>
+    </motion.section>
+  );
+};
+
+// Sound effect generator
+const playZapSound = () => {
+  const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+  const now = audioContext.currentTime;
+  
+  // Create oscillator for the "zap" sound
+  const osc = audioContext.createOscillator();
+  const gain = audioContext.createGain();
+  
+  osc.connect(gain);
+  gain.connect(audioContext.destination);
+  
+  // Start high frequency and sweep down (classic "laser" effect)
+  osc.frequency.setValueAtTime(800, now);
+  osc.frequency.exponentialRampToValueAtTime(100, now + 0.1);
+  
+  // Quick fade out
+  gain.gain.setValueAtTime(0.3, now);
+  gain.gain.exponentialRampToValueAtTime(0.01, now + 0.1);
+  
+  osc.start(now);
+  osc.stop(now + 0.1);
+};
+
+// Reveal sound effect (deeper, more dramatic)
+const playRevealSound = () => {
+  const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+  const now = audioContext.currentTime;
+  
+  // Create a more dramatic reveal sound with multiple layers
+  const osc1 = audioContext.createOscillator();
+  const osc2 = audioContext.createOscillator();
+  const gain = audioContext.createGain();
+  
+  osc1.connect(gain);
+  osc2.connect(gain);
+  gain.connect(audioContext.destination);
+  
+  // Primary tone: sweep from 200 to 600
+  osc1.frequency.setValueAtTime(200, now);
+  osc1.frequency.linearRampToValueAtTime(600, now + 0.3);
+  
+  // Secondary tone: sweep from 100 to 400
+  osc2.frequency.setValueAtTime(100, now);
+  osc2.frequency.linearRampToValueAtTime(400, now + 0.3);
+  
+  // Fade envelope
+  gain.gain.setValueAtTime(0.2, now);
+  gain.gain.linearRampToValueAtTime(0.4, now + 0.15);
+  gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+  
+  osc1.start(now);
+  osc2.start(now);
+  osc1.stop(now + 0.3);
+  osc2.stop(now + 0.3);
+};
+
+// Sub-component for individual cards to handle internal animations
+const RewardCard = ({ p, i }) => {
+  const [isFlipped, setIsFlipped] = useState(false);
+
+  const handleClick = () => {
+    setIsFlipped(!isFlipped);
+    // Play zap sound on click
+    try {
+      playZapSound();
+    } catch (error) {
+      console.log("Audio context not available");
+    }
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: i * 0.1 }}
+      className={`${p.order} relative`}
+    >
+      {/* FLIP CONTAINER */}
+      <motion.div
+        animate={{ rotateY: isFlipped ? 180 : 0 }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
+        onClick={handleClick}
+        style={{ 
+          transformStyle: "preserve-3d",
+          cursor: "pointer"
+        }}
+        className={`relative w-full ${p.featured ? 'h-[420px]' : 'h-[350px]'} bg-white/[0.03] backdrop-blur-md border ${p.borderColor} p-8 flex flex-col justify-between`}
+      >
+        {/* FRONT SIDE */}
+        {!isFlipped && (
+          <div className="w-full h-full flex flex-col justify-between">
+            <div className="relative z-10">
+              <div className="flex justify-between items-start mb-6">
+                <span className={`font-mono text-[10px] tracking-widest ${p.textColor} opacity-60 uppercase`}>{p.label}</span>
+                {p.featured ? <Zap size={18} className="text-yellow-400 animate-pulse" /> : <Trophy size={18} className={`${p.textColor} opacity-40`} />}
+              </div>
+              <h3 className="text-xs font-cyber tracking-[0.2em] text-gray-400 uppercase transition-colors">{p.rank}</h3>
+            </div>
+
+            <div className="relative z-10 text-center py-4 flex items-center justify-center flex-1">
+              <div>
+                <p className={`text-6xl md:text-7xl font-black font-cyber ${p.textColor} drop-shadow-[0_0_15px_rgba(0,0,0,0.5)] mb-4`}>
+                  ?
+                </p>
+                <p className={`text-sm font-mono tracking-widest ${p.textColor} uppercase animate-pulse`}>Click to Reveal</p>
+              </div>
+            </div>
+
+            <div className="relative z-10 flex justify-between items-end border-t border-white/5 pt-6">
+              <div className="space-y-1">
+                <div className={`w-12 h-[1px] ${p.bgColor} opacity-30`} />
+                <div className={`w-8 h-[1px] ${p.bgColor} opacity-30`} />
+              </div>
+              <div className="text-[9px] font-mono text-gray-600 uppercase">Status: Hidden</div>
+            </div>
+          </div>
+        )}
+
+        {/* BACK SIDE */}
+        {isFlipped && (
+          <div className={`absolute inset-0 w-full h-full flex flex-col justify-between p-8`} style={{ transform: "scaleX(-1)" }}>
+            <div className="relative z-10">
+              <div className="flex justify-between items-start mb-6">
+                <span className={`font-mono text-[10px] tracking-widest ${p.textColor} opacity-60 uppercase`}>{p.label}</span>
+                {p.featured ? <Zap size={18} className="text-yellow-400 animate-pulse" /> : <Trophy size={18} className={`${p.textColor} opacity-40`} />}
+              </div>
+            </div>
+
+            <div className="text-center space-y-6 w-full flex-1 flex flex-col items-center justify-center">
+              <div>
+                <p className="text-[10px] font-mono tracking-widest text-gray-400 uppercase mb-4">Prize Pool Unlocked</p>
+                <h3 className={`text-5xl md:text-6xl font-black font-cyber ${p.textColor} drop-shadow-[0_0_15px_rgba(0,0,0,0.5)]`}>{p.amount}</h3>
+              </div>
+              
+              <div className="space-y-2 text-left w-full max-w-xs">
+                <div className="flex items-center gap-2">
+                  <span className={`text-lg font-bold ${p.textColor}`}>✓</span>
+                  <span className="text-xs text-gray-300">Rank: {p.rank}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className={`text-lg font-bold ${p.textColor}`}>✓</span>
+                  <span className="text-xs text-gray-300">Certificate & Recognition</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className={`text-lg font-bold ${p.textColor}`}>✓</span>
+                  <span className="text-xs text-gray-300">Winners Announcement</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="relative z-10 flex justify-between items-end border-t border-white/5 pt-6">
+              <div className="space-y-1">
+                <div className={`w-12 h-[1px] ${p.bgColor} opacity-30`} />
+                <div className={`w-8 h-[1px] ${p.bgColor} opacity-30`} />
+              </div>
+              <div className="text-[9px] font-mono text-gray-600 uppercase">Click to hide</div>
+            </div>
+          </div>
+        )}
+      </motion.div>
     </motion.div>
-  </section>
-);
+  );
+};
 
 // 8. TIMELINE
 const TimelineSection = () => (
@@ -591,25 +850,6 @@ const TimelineSection = () => (
            <div className={`w-12 h-12 bg-[#050505] border-2 border-${item.color}-500 flex items-center justify-center font-bold text-${item.color}-500 z-10 mb-8 md:mb-0 order-1 md:order-2 rounded-full shadow-[0_0_15px_${item.color}]`}>{item.id}</div>
            <div className={`w-full md:w-5/12 ${item.align === "left" ? "order-3" : "order-3 md:order-1"}`}></div>
         </motion.div>
-      ))}
-    </div>
-  </section>
-);
-const RewardsSection = () => (
-  <section id="rewards" className="py-32 px-6 max-w-6xl mx-auto">
-    <SectionHeader chapter="CHAPTER VI" title="REWARDS & PERKS" />
-
-    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-      {[
-        { title: "Cash Prizes", desc: "₹1,00,000+ prize pool" },
-        { title: "Mentorship", desc: "Expert industry mentors" },
-        { title: "Certificates", desc: "Participation & Merit" },
-        { title: "Medals & Goodies", desc: "Top teams rewarded" },
-      ].map((r, i) => (
-        <ChamferCard key={i}>
-          <h3 className="font-cyber text-yellow-400 mb-2">{r.title}</h3>
-          <p className="text-gray-400 font-mono text-sm">{r.desc}</p>
-        </ChamferCard>
       ))}
     </div>
   </section>
@@ -666,11 +906,11 @@ const Footer = () => (
         </motion.div>
 
         {/* Organized Links */}
-        <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, delay: 0.1 }} className="grid grid-cols-2 gap-4">
+        <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="grid grid-cols-2 gap-4">
           <div>
             <h4 className="font-cyber text-white font-bold tracking-widest mb-3 text-xs">EXPLORE</h4>
             <div className="flex flex-col gap-2">
-              {["Mission", "Domains", "Timeline", "Register"].map((item) => (
+              {["Mission", "Domains", "Rewards", "Timeline", "Register"].map((item) => (
                 <ScrollToLink key={item} target={item.toLowerCase()} className="text-left text-gray-500 hover:text-yellow-400 font-mono text-xs transition-colors w-fit flex items-center group">
                   <span className="opacity-0 group-hover:opacity-100 transition-opacity -ml-2 mr-1">&gt;</span> {item}
                 </ScrollToLink>
@@ -681,7 +921,7 @@ const Footer = () => (
         </motion.div>
 
         {/* Connect (CENTERED CONTENT) */}
-        <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, delay: 0.2 }} className="flex flex-col items-center md:items-start">
+        <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex flex-col items-center md:items-start">
           <h4 className="font-cyber text-white font-bold tracking-widest mb-3 text-xs">CONNECT</h4>
       <div className="flex gap-4 mb-4">
         {SOCIAL_LINKS.map(({ name, url, icon: Icon }) => (
@@ -714,7 +954,7 @@ const Footer = () => (
 
       </div>
 
-      <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, delay: 0.3 }} className="border-t border-white/5 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
+      <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="border-t border-white/5 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
         <p className="text-gray-700 font-mono text-[10px]">© 2026 ELECTROVERSE . ALL RIGHTS RESERVED.</p>
      
       </motion.div>
@@ -766,7 +1006,7 @@ const TechathonPage = () => {
         <MissionSection />
         {/* <WhySection /> */}
         <DomainsSection />
-        {/* <RewardsSection/> */}
+        <RewardsSection/>
         <TimelineSection />
         {/* <CTASection /> */}
 

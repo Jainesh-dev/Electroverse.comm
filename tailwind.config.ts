@@ -59,6 +59,7 @@ export default {
       fontFamily: {
         mono: ["JetBrains Mono", "Consolas", "Monaco", "monospace"],
         tech: ["Orbitron", "Arial", "sans-serif"],
+        cyber: ["Orbitron", "Courier New", "monospace"],
       },
       keyframes: {
         "accordion-down": {

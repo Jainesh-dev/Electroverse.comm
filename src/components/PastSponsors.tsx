@@ -1,4 +1,4 @@
-import { sponsors } from "@/SponsorData/Sponsors";
+import { sponsors } from "../SponsorData/Sponsors";
 
 export default function PastSponsors() {
   return (

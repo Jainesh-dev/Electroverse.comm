@@ -1,16 +1,19 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom"; // ✅ ADDED
-import Navbar from "@/components/Navbar";
-import HeroSection from "@/components/Hero";
-import EventCountdown from "@/components/EventCountdown";
-import AboutSection from "@/components/About";
-import EventsSection from "@/components/Events";
-import ContactSection from "@/components/Contact";
-import PastSponsors from "@/components/PastSponsors";
+import Navbar from "../components/Navbar";
+import HeroSection from "../components/Hero";
+import EventCountdown from "../components/EventCountdown";
+import AboutSection from "../components/About";
+import EventsSection from "../components/Events";
+import ContactSection from "../components/Contact";
+import PastSponsors from "../components/PastSponsors";
+import { Trophy } from "lucide-react";
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState("home");
   const location = useLocation(); // ✅ ADDED
+
+  // Rewards Section removed - now in App.tsx
 
   const handleNavigate = (section: string) => {
     setActiveSection(section);
