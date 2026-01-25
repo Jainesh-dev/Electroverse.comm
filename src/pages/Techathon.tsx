@@ -239,67 +239,105 @@ const Navbar = () => {
 const HeroSection = () => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const { scrollY } = useScroll();
-  const y1 = useTransform(scrollY, [0, 500], [0, 200]);
-  const y2 = useTransform(scrollY, [0, 500], [0, -150]);
+  const y1 = useTransform(scrollY, [0, 500], [0, 150]);
+  const y2 = useTransform(scrollY, [0, 500], [0, -100]);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePos({ x: (e.clientX / window.innerWidth - 0.5) * 20, y: (e.clientY / window.innerHeight - 0.5) * 20 });
+      setMousePos({
+        x: (e.clientX / window.innerWidth - 0.5) * 15,
+        y: (e.clientY / window.innerHeight - 0.5) * 15,
+      });
     };
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
   return (
-    <section id="hero" className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-[#050505]">
-      <motion.div 
-        className="absolute inset-0 z-0" 
-        animate={{ x: mousePos.x * -1, y: mousePos.y * -1 }} 
+    <section
+      id="hero"
+      className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-[#030303]"
+    >
+      {/* BACKGROUND */}
+      <motion.div
+        className="absolute inset-0 z-0"
+        animate={{ x: mousePos.x * -1, y: mousePos.y * -1 }}
         transition={{ type: "tween", ease: "linear", duration: 0.2 }}
+        style={{
+          maskImage:
+            "linear-gradient(to bottom, black 70%, transparent 100%)",
+          WebkitMaskImage:
+            "linear-gradient(to bottom, black 70%, transparent 100%)",
+        }}
       >
-        <img src={HERO_IMAGE_URL} className="w-full h-full object-cover opacity-60 mix-blend-luminosity" alt="Hero" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/40 to-transparent" />
+        <img
+          src={HERO_IMAGE_URL}
+          className="w-full h-full object-cover"
+          alt="Hero"
+        />
+        <div className="absolute inset-0 bg-black/30" />
       </motion.div>
 
-      <div className="relative z-10 flex flex-col items-center leading-none select-none">
-        <motion.div initial={{ opacity: 0, y: 100 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, ease: "easeOut" }}>
-            <motion.h1 style={{ y: y2 }} className="font-cyber text-[15vw] md:text-[180px] font-black text-yellow-400 tracking-tighter z-20 drop-shadow-[0_0_35px_rgba(250,204,21,0.6)] mix-blend-screen">TECH</motion.h1>
+      {/* CENTER CONTENT */}
+      <div className="relative z-10 flex flex-col items-center leading-none select-none text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 100 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+        >
+          <motion.h1
+            style={{ y: y2 }}
+            className="font-cyber text-[10vw] md:text-[140px] font-black text-yellow-400 tracking-tighter drop-shadow-[0_0_35px_rgba(250,204,21,0.6)]"
+          >
+            TECH-A-THON
+          </motion.h1>
         </motion.div>
-        <motion.div initial={{ opacity: 0, y: 100 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}>
-            <motion.h1 style={{ y: y1 }} className="font-cyber text-[15vw] md:text-[180px] font-black text-fuchsia-500 tracking-tighter -mt-[4vw] md:-mt-[60px] z-10 drop-shadow-[0_0_35px_rgba(217,70,239,0.6)] mix-blend-screen">ATHON</motion.h1>
+
+        <motion.div
+          initial={{ opacity: 0, y: 100 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.2 }}
+        >
+          <motion.h1
+            style={{ y: y1 }}
+            className="font-cyber text-[12vw] md:text-[160px] font-black text-fuchsia-500 tracking-tighter -mt-[2vw] md:-mt-[40px] drop-shadow-[0_0_35px_rgba(217,70,239,0.6)]"
+          >
+            4.0
+          </motion.h1>
         </motion.div>
-        
-        <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.5, type: "spring" }} className="mt-8 bg-yellow-400 text-black px-8 py-1 shadow-[0_0_20px_rgba(250,204,21,0.5)]" style={{ clipPath: "polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px)" }}>
-          <span className="font-cyber text-4xl font-black">4.0</span>
-        </motion.div>
-        
       </div>
 
-      <div className="absolute bottom-10 flex flex-col items-center gap-2 opacity-80 z-20">
-  {/* UNSTOP LOGO */}
+      {/* BOTTOM CONTENT */}
+      <div className="absolute bottom-10 z-20 flex flex-col items-center gap-4 opacity-80">
+        {/* POWERED BY */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6 }}
+          className="flex flex-col items-center gap-3"
+        >
+          <span className="text-[12px] font-mono tracking-[0.4em] text-white/80 uppercase">
+            POWERED BY
+          </span>
+          <img
+            src="/Unstop-Logo-Blue-Large.png"
+            alt="Unstop"
+            className="h-12 md:h-16 brightness-125 drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]"
+          />
+        </motion.div>
 
-  <span className="text-[14px] font-mono tracking-[0.35em]  text-gray-400 uppercase">
-    POWERED BY
-  </span>
-  <img
-    src="/Unstop-Logo-Blue-Large.png"
-    alt="Unstop"
-    className="h-10 md:h-14 opacity-100 hover:opacity-100 transition-opacity"
-  />
-
-  {/* SCROLL INDICATOR */}
-  <div className="flex flex-col items-center gap-2  animate-bounce">
-    <span className="text-[10px]  font-mono tracking-widest text-fuchsia-400">
-      SCROLL TO INITIALIZE
-    </span>
-    <div className="w-[1px] h-12 bg-gradient-to-b from-fuchsia-400 to-transparent"></div>
-  </div>
-</div>
-
+        {/* SCROLL INDICATOR */}
+        <div className="flex flex-col items-center gap-2 animate-bounce">
+          <span className="text-[10px] font-mono tracking-widest text-fuchsia-400">
+            SCROLL TO INITIALIZE
+          </span>
+          <div className="w-[1px] h-12 bg-gradient-to-b from-fuchsia-400 to-transparent" />
+        </div>
+      </div>
     </section>
   );
-
 };
+
 
 const AboutSection = () => (
   <section id="about" className="py-32 px-6 max-w-6xl mx-auto">
@@ -404,10 +442,10 @@ const MissionSection = () => {
             className="grid grid-cols-2 gap-12 text-center"
           >
             {[
-              { label: "PLAYERS", val: "500+", icon: <Shield size={20} className="text-fuchsia-400" /> },
+              { label: "PLAYERS", val: "100+", icon: <Shield size={20} className="text-fuchsia-400" /> },
               { label: "RUNTIME", val: "48H", icon: <Zap size={20} className="text-yellow-400" /> },
-              { label: "PROJECTS", val: "50+", icon: <Target size={20} className="text-fuchsia-400" /> },
-              { label: "REWARDS", val: "₹1L+", icon: <Globe size={20} className="text-blue-400" /> },
+              { label: "PROJECTS", val: "30+", icon: <Target size={20} className="text-fuchsia-400" /> },
+              { label: "REWARDS", val: "₹50K", icon: <Globe size={20} className="text-blue-400" /> },
             ].map((stat, i) => (
               <motion.div
                 key={i}
@@ -897,7 +935,7 @@ const Footer = () => (
                   alt="Electroverse Logo"
                   className="w-12 sm:w-14 object-contain"
             />
-            <span className="font-cyber font-bold text-lg text-white tracking-widest">TECHATHON 4.0</span>
+            <span className="font-cyber font-bold text-lg text-white tracking-widest">Electroverse.comm</span>
           </div>
           <p className="text-gray-500 font-mono text-xs leading-relaxed max-w-xs">
             The ultimate convergence of code, creativity, and chaos. Join the revolution.
