@@ -372,8 +372,14 @@ const AboutSection = () => (
 // 4. MISSION (UPDATED WITH ANIMATED STATS)
 
 const MissionSection = () => {
-  const isEventLive = new Date() >= EVENT_DATE;
 
+const EVENT_START = new Date("2026-02-26T00:00:00");
+const EVENT_END = new Date("2026-02-28T18:00:00"); // 6 PM
+const now = new Date();
+
+const isBeforeEvent = now < EVENT_START;
+const isEventLive = now >= EVENT_START && now < EVENT_END;
+const isEventEnded = now >= EVENT_END;
   return (
     <section id="mission" className="py-32 px-6 max-w-7xl mx-auto relative">
       <SectionHeader chapter="CHAPTER II" title="THE MISSION" color="fuchsia" />
@@ -392,35 +398,47 @@ const MissionSection = () => {
             </span>
           </h2>
 
-          <p className="text-xl text-gray-400 font-hud max-w-md border-l-2 border-fuchsia-500 pl-6 mb-8">
-            Your guide to understanding the protocol. Read carefully before initialization.
-          </p>
+         
 
           {/* STATUS & BUTTON GROUP */}
           <div className="flex flex-col gap-4 items-start">
-            {!isEventLive ? (
-              <>
-                <div className="flex items-center gap-2 text-fuchsia-400 text-xs font-mono tracking-widest">
-                  <Timer size={14} />
-                  <span>T-MINUS INITIALIZATION</span>
-                </div>
+  {isBeforeEvent && (
+    <>
+      <div className="flex items-center gap-2 text-fuchsia-400 text-xs font-mono tracking-widest">
+        <Timer size={14} />
+        <span>EVENT STARTS IN</span>
+      </div>
+      <CountdownTimer />
+    </>
+  )}
 
-                <CountdownTimer />
-              </>
-            ) : (
-              <>
-                <div className="flex items-center gap-2 text-green-400 text-xs font-mono tracking-widest animate-pulse">
-                  <Zap size={14} />
-                  <span>STATUS: LIVE</span>
-                </div>
+  {isEventLive && (
+    <>
+      <div className="flex items-center gap-2 text-green-400 text-xs font-mono tracking-widest animate-pulse">
+        <Zap size={14} />
+        <span>STATUS: LIVE</span>
+      </div>
 
-                <span className="text-4xl font-black font-cyber text-green-400 tracking-widest">
-                  IT’S LIVE
-                </span>
-              </>
-            )}
+      <span className="text-4xl font-black font-cyber text-green-400 tracking-widest">
+        IT’S LIVE
+      </span>
+    </>
+  )}
 
-          </div>
+  {isEventEnded && (
+    <>
+      <div className="flex items-center gap-2 text-red-400 text-xs font-mono tracking-widest">
+        <Shield size={14} />
+        <span>STATUS: ENDED</span>
+      </div>
+
+      <span className="text-4xl font-black font-cyber text-red-500 tracking-widest">
+       ENDED
+      </span>
+    </>
+  )}
+</div>
+
         </motion.div>
 
         <motion.div
@@ -865,11 +883,12 @@ const TimelineSection = () => (
     <div className="absolute left-4 md:left-1/2 top-[300px] bottom-0 w-[1px] bg-gradient-to-b from-red-900 via-red-500 to-transparent opacity-30 md:-translate-x-1/2"></div>
     <div className="space-y-24 relative z-10">
       {[ 
-        { id: "1", title: "Inauguration Ceremony & Event begins", sub: "System Boot", align: "left", color: "red" },
-        { id: "2", title: "Mentoring Session", sub: "Build & Optimize", align: "right", color: "orange" },
-        { id: "3", title: "Prototyping", sub: "Final Evaluation", align: "left", color: "purple" },
-        { id: "4", title: "Shortlisting", sub: "Final Evaluation", align: "right", color: "pink" },
-        { id: "5", title: "Final Judging & Closing Ceremony", sub: "Final Evaluation", align: "left", color: "purple" }
+        { id: "1", title: "Inauguration Ceremony & Event begins", sub: "", align: "left", color: "red" },
+        { id: "2", title: "Commencement", sub: "Build ", align: "right", color: "orange" },
+        { id: "2", title: "Mentoring Session", sub: "Build & Optimize", align: "left", color: "orange" },
+        { id: "3", title: "Prototyping", sub: "", align: "right", color: "purple" },
+        { id: "4", title: "Shortlisting", sub: "Final Evaluation", align: "left", color: "pink" },
+        { id: "5", title: "Final Judging & Closing Ceremony", sub: "", align: "right", color: "purple" }
       ].map((item, i) => (
         <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={item.align === "left" ? fadeRight : fadeLeft} className={`flex flex-col md:flex-row items-center justify-between w-full`}>
            <div className={`w-full md:w-5/12 ${item.align === "left" ? "order-2 md:order-1" : "order-2 md:order-3"} relative`}>
@@ -878,8 +897,8 @@ const TimelineSection = () => (
                  <p className={`text-${item.color}-400/60 text-sm`}>{item.sub}</p>
                  
                  {/* RESTORED DETAILED CONTENT FOR PHASES */}
-                 {item.id === "1" && <ul className="space-y-2 font-mono text-xs text-gray-400 mt-4">{["Opening Ceremony", "Team Formation", "Idea Validation"].map(li => <li key={li} className="flex gap-2"><span className="text-red-500">&gt;</span> {li}</li>)}</ul>}
-                 {item.id === "2" && <ul className="space-y-2 font-mono text-xs text-gray-400 mt-4">{["Prototyping", "Mentorship Rounds", "Midnight Refresh"].map(li => <li key={li} className="flex gap-2"><span className="text-orange-500">&gt;</span> {li}</li>)}</ul>}
+                 {item.id === "1" && <ul className="space-y-2 font-mono text-xs text-gray-400 mt-4">{["Opening Ceremony"].map(li => <li key={li} className="flex gap-2"><span className="text-red-500">&gt;</span> {li}</li>)}</ul>}
+               
                  {item.id === "3" && <ul className="space-y-2 font-mono text-xs text-gray-400 mt-4">{["Final Pitch", "Jury Verdict", "Prize Distribution"].map(li => <li key={li} className="flex gap-2"><span className="text-purple-500">&gt;</span> {li}</li>)}</ul>}
 
               </div>
@@ -906,13 +925,13 @@ const CTASection = () => (
 );
 const FAQSection = () => (
   <section id="faq" className="py-32 px-6 max-w-5xl mx-auto">
-    <SectionHeader chapter="CHAPTER VII" title="FAQ" />
+    <SectionHeader chapter="CHAPTER V" title="FAQ" />
 
     {[
-      ["Who can participate?", "Students from any discipline."],
+      ["Who can participate?", "Undergraduate /Engineering Students"],
       ["Team size?", "2–4 members per team."],
-      ["Is it free?", "Yes, completely free."],
-      ["Mode?", "Offline / Hybrid."],
+      ["Is it free?", "Registration Fee -Rs. 200"],
+      ["Mode?", "Offline"],
     ].map(([q, a], i) => (
       <ChamferCard key={i}>
         <h4 className="font-cyber text-yellow-400">{q}</h4>
@@ -947,7 +966,7 @@ const Footer = () => (
           <div>
             <h4 className="font-cyber text-white font-bold tracking-widest mb-3 text-xs">EXPLORE</h4>
             <div className="flex flex-col gap-2">
-              {["Mission", "Domains", "Rewards", "Timeline", "Register"].map((item) => (
+              {["Mission", "Domains", "Rewards", "Timeline"].map((item) => (
                 <ScrollToLink key={item} target={item.toLowerCase()} className="text-left text-gray-500 hover:text-yellow-400 font-mono text-xs transition-colors w-fit flex items-center group">
                   <span className="opacity-0 group-hover:opacity-100 transition-opacity -ml-2 mr-1">&gt;</span> {item}
                 </ScrollToLink>
