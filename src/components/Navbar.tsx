@@ -17,7 +17,6 @@ const Navbar = ({ activeSection, onNavigate }: NavbarProps) => {
     { id: "home", label: "Home" },
     { id: "about", label: "About" },
     { id: "events", label: "Events" },
-    { id: "rewards", label: "Rewards" },
     { id: "team", label: "Team" }, // separate page
     { id: "contact", label: "Contact Us" },
   ];
